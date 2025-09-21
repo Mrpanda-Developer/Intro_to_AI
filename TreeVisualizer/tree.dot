@@ -1,50 +1,78 @@
-digraph G {
-  node [shape=ellipse, style=filled, fontname="Arial"];
-  "root" [label="Finding an actor who is also a director", shape=ellipse, fillcolor=lightgrey, style=filled];
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "root" -> "exit_tim_robbins_59";
-  "fail_sam_raimi_44" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_tim_robbins_59" -> "fail_sam_raimi_44";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_tim_robbins_59" -> "exit_sam_raimi_64";
-  "fail_sam_raimi_44" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_sam_raimi_64" -> "fail_sam_raimi_44";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_sam_raimi_64" -> "exit_john_turturro_49";
-  "fail_sam_raimi_36" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_john_turturro_49" -> "fail_sam_raimi_36";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_john_turturro_49" -> "exit_john_goodman_52";
-  "fail_sam_raimi_36" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_john_goodman_52" -> "fail_sam_raimi_36";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_john_goodman_52" -> "exit_jeff_bridges_68";
-  "fail_sam_raimi_41" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_jeff_bridges_68" -> "fail_sam_raimi_41";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_jeff_bridges_68" -> "exit_john_goodman_56";
-  "fail_sam_raimi_41" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_john_goodman_56" -> "fail_sam_raimi_41";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_john_goodman_56" -> "exit_john_turturro_57";
-  "fail_sam_raimi_41" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_john_turturro_57" -> "fail_sam_raimi_41";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_john_turturro_57" -> "exit_sidney_cox_53";
-  "fail_sam_raimi_47" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_sidney_cox_53" -> "fail_sam_raimi_47";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_sidney_cox_53" -> "exit_ethan_coen_53";
-  "fail_sam_raimi_47" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_ethan_coen_53" -> "fail_sam_raimi_47";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_ethan_coen_53" -> "exit_joel_coen_52";
-  "fail_sam_raimi_47" [label="sam_raimi ❌", fillcolor=red, fontcolor=white, color=black];
-  "exit_joel_coen_52" -> "fail_sam_raimi_47";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_joel_coen_52" -> "exit_paul_l_smith_46";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_paul_l_smith_46" -> "exit_sam_raimi_34";
-  node [shape=ellipse, style=filled, fontname="Arial", fontsize=10, width=0.3, height=0.3, fixedsize=false];
-  "exit_sam_raimi_34" -> "exit_movie(crimewave,1985)_26";
+digraph tree {
+  rankdir=TB;
+  ranksep=1.0; nodesep=0.8;
+  splines=ortho;
+  concentrate=true;
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=16, width=2.5, height=0.8];
+  edge [penwidth=3.0, arrowsize=1.5];
+  graph [fontsize=18, fontname="Arial Bold"];
+	"root" [label="Actor Comparisons", shape=box]
+	"actor_ethan_coen" [label="ethan_coen", shape=box]
+	"actor_jeff_bridges" [label="jeff_bridges", shape=box]
+	"actor_joel_coen" [label="joel_coen", shape=box]
+	"actor_john_goodman" [label="john_goodman", shape=box]
+	"actor_sam_raimi" [label="sam_raimi", shape=box]
+	"pair_7" [label="vs joel_coen", shape=box]
+	"pair_8" [label="vs joel_coen,", shape=box]
+	"pair_5" [label="vs sidney_cox", shape=box]
+	"pair_3" [label="vs john_goodman", shape=box]
+	"pair_4" [label="vs john_turturro", shape=box]
+	"pair_6" [label="vs sidney_cox", shape=box]
+	"pair_2" [label="vs john_turturro", shape=box]
+	"pair_1" [label="vs tim_robbins", shape=box]
+	"pair_7_fail_reason" [label="⚠️ No connection", shape=box]
+	"pair_7_fail" [label="❌ No match", shape=box]
+	"pair_7_dir_a1" [label="🎬 ethan_coen directed the_hudsucker_proxy", shape=box]
+	"pair_7_dir_a2" [label="🎬 joel_coen directed the_hudsucker_proxy", shape=box]
+	"pair_8_movie" [label="Movie: down_from_the_mountain", shape=box]
+	"pair_8_ok" [label="✅ Match in down_from_the_mountain", shape=box]
+	"pair_5_fail_reason" [label="⚠️ sidney_cox didn't direct _978", shape=box]
+	"pair_5_success" [label="✅ Match found", shape=box]
+	"pair_3_fail_reason" [label="⚠️ john_goodman didn't direct _978", shape=box]
+	"pair_3_fail" [label="❌ No match", shape=box]
+	"pair_4_fail_reason" [label="⚠️ john_turturro didn't direct _978", shape=box]
+	"pair_4_fail" [label="❌ No match", shape=box]
+	"pair_6_fail_reason" [label="⚠️ sidney_cox didn't direct _978", shape=box]
+	"pair_6_success" [label="✅ Match found", shape=box]
+	"pair_2_fail_reason" [label="⚠️ john_turturro didn't direct _978", shape=box]
+	"pair_2_success" [label="✅ Match found", shape=box]
+	"pair_1_fail_reason" [label="⚠️ tim_robbins didn't direct _978", shape=box]
+	"pair_1_success" [label="✅ Match found", shape=box]
+	"pair_8_movie_a2" [label="Actor: ethan_coen,", shape=box]
+	"pair_8_movie_a1" [label="Actor: joel_coen,", shape=box]
+
+	"root" -> "actor_sam_raimi"
+	"root" -> "actor_john_goodman"
+	"root" -> "actor_jeff_bridges"
+	"root" -> "actor_ethan_coen"
+	"root" -> "actor_joel_coen"
+	"actor_ethan_coen" -> "pair_5"
+	"actor_ethan_coen" -> "pair_7"
+	"actor_ethan_coen" -> "pair_8"
+	"actor_jeff_bridges" -> "pair_3"
+	"actor_jeff_bridges" -> "pair_4"
+	"actor_joel_coen" -> "pair_6"
+	"actor_john_goodman" -> "pair_2"
+	"actor_sam_raimi" -> "pair_1"
+	"pair_7" -> "pair_7_fail"
+	"pair_7" -> "pair_7_dir_a2"
+	"pair_7" -> "pair_7_dir_a1"
+	"pair_7" -> "pair_7_fail_reason"
+	"pair_8" -> "pair_8_movie"
+	"pair_8" -> "pair_8_ok"
+	"pair_5" -> "pair_5_success"
+	"pair_5" -> "pair_5_fail_reason"
+	"pair_3" -> "pair_3_fail"
+	"pair_3" -> "pair_3_fail_reason"
+	"pair_4" -> "pair_4_fail"
+	"pair_4" -> "pair_4_fail_reason"
+	"pair_6" -> "pair_6_success"
+	"pair_6" -> "pair_6_fail_reason"
+	"pair_2" -> "pair_2_success"
+	"pair_2" -> "pair_2_fail_reason"
+	"pair_1" -> "pair_1_success"
+	"pair_1" -> "pair_1_fail_reason"
+	"pair_8_movie" -> "pair_8_movie_a1"
+	"pair_8_movie" -> "pair_8_movie_a2"
+}
 }

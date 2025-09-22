@@ -1,0 +1,168 @@
+SEARCH TREE VISUALIZATION
+==================================================
+SUCCESSFUL MATCHES FOUND:
+------------------------------
+No successful matches found in this search.
+
+COMPLETE SEARCH TREE:
+------------------------------
+Prolog Actor-Director Search
+  Call: Find actor
+    Call: Find director
+      Call: Find director
+        Call: Find director
+          Fail: Director search failed
+          Redo: Backtrack - try alternative actor
+        Exit: Director joel_coen for 'the_hudsucker_proxy'
+        Fail: Director search failed
+        Redo: Backtrack - try alternative director
+      Exit: Director ethan_coen for 'the_hudsucker_proxy'
+    Exit: tim_robbins in 'the_hudsucker_proxy' as norville_barnes
+  Call: Find director
+    Call: Find director
+      Call: Find director
+        Exit: Director sam_raimi for 'crimewave'
+        Redo: Backtrack - try alternative actor
+      Exit: Director joel_coen for 'the_hudsucker_proxy'
+      Exit: Director sam_raimi for 'crimewave'
+      Redo: Backtrack - try alternative director
+    Exit: Director ethan_coen for 'the_hudsucker_proxy'
+  Call: Find director
+    Call: Find director
+      Fail: No matching director found for actor
+    Call: Find director
+      Fail: No matching director found for actor
+    Exit: Director ethan_coen for 'barton_fink'
+    Exit: Director joel_coen for 'barton_fink'
+    Redo: Backtrack - try alternative actor
+    Redo: Backtrack - try alternative director
+  Call: Find director
+    Call: Find director
+      Fail: No matching director found for actor
+    Call: Find director
+      Fail: No matching director found for actor
+    Exit: Director ethan_coen for 'barton_fink'
+    Exit: Director joel_coen for 'barton_fink'
+    Redo: Backtrack - try alternative actor
+    Redo: Backtrack - try alternative director
+  Call: Find director
+    Call: Find director
+      Fail: No matching director found for actor
+    Exit: Director joel_coen for 'the_big_lebowski'
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Call: Find director
+      Fail: No matching director found for actor
+    Exit: Director joel_coen for 'the_big_lebowski'
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Call: Find director
+      Fail: No matching director found for actor
+    Exit: Director joel_coen for 'the_big_lebowski'
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Call: Find director
+      Fail: No matching director found for actor
+    Call: Find director
+      Fail: No matching director found for actor
+    Call: Find director
+      Fail: No matching director found for actor
+    Exit: Director chris_hegedus for 'down_from_the_mountain'
+    Exit: Director d_a_pennebaker for 'down_from_the_mountain'
+    Exit: Director nick_doob for 'down_from_the_mountain'
+    Redo: Backtrack - try alternative actor
+    Redo: Backtrack - try alternative director
+    Redo: Backtrack - try alternative director
+  Call: Find director
+    Call: Find director
+      Call: Find director
+        Call: Find director
+          Exit: Director ethan_coen for 'barton_fink'
+          Exit: Director ethan_coen for 'the_hudsucker_proxy'
+          Redo: Backtrack - try alternative actor
+          Redo: Backtrack - try alternative director
+        Exit: Director d_a_pennebaker for 'down_from_the_mountain'
+        Exit: Director ethan_coen for 'barton_fink'
+        Exit: Director ethan_coen for 'the_hudsucker_proxy'
+        Redo: Backtrack - try alternative director
+        Redo: Backtrack - try alternative director
+      Exit: Director chris_hegedus for 'down_from_the_mountain'
+      Exit: Director ethan_coen for 'barton_fink'
+      Exit: Director ethan_coen for 'the_hudsucker_proxy'
+      Redo: Backtrack - try alternative director
+      Redo: Backtrack - try alternative director
+    Exit: Director nick_doob for 'down_from_the_mountain'
+  Call: Find director
+    Call: Find director
+      Call: Find director
+        Call: Find director
+          Exit: Director joel_coen for 'barton_fink'
+          Exit: Director joel_coen for 'the_big_lebowski'
+          Exit: Director joel_coen for 'the_hudsucker_proxy'
+          Redo: Backtrack - try alternative actor
+          Redo: Backtrack - try alternative director
+          Redo: Backtrack - try alternative director
+        Exit: Director d_a_pennebaker for 'down_from_the_mountain'
+        Exit: Director joel_coen for 'barton_fink'
+        Exit: Director joel_coen for 'the_big_lebowski'
+        Exit: Director joel_coen for 'the_hudsucker_proxy'
+        Redo: Backtrack - try alternative director
+        Redo: Backtrack - try alternative director
+        Redo: Backtrack - try alternative director
+      Exit: Director chris_hegedus for 'down_from_the_mountain'
+      Exit: Director joel_coen for 'barton_fink'
+      Exit: Director joel_coen for 'the_big_lebowski'
+      Exit: Director joel_coen for 'the_hudsucker_proxy'
+      Redo: Backtrack - try alternative director
+      Redo: Backtrack - try alternative director
+      Redo: Backtrack - try alternative director
+    Exit: Director nick_doob for 'down_from_the_mountain'
+  Call: Find director
+    Call: Find director
+      Fail: No matching director found for actor
+    Exit: Director sam_raimi for 'crimewave'
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Call: Find director
+      Fail: No matching director found for actor
+    Exit: Director sam_raimi for 'crimewave'
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Call: Find director
+      Exit: Director joel_coen for 'barton_fink'
+      Exit: Director joel_coen for 'the_big_lebowski'
+      Exit: Director joel_coen for 'the_hudsucker_proxy'
+      Redo: Backtrack - try alternative actor
+      Redo: Backtrack - try alternative director
+      Redo: Backtrack - try alternative director
+    Exit: Director sam_raimi for 'crimewave'
+  Call: Find director
+    Call: Find director
+      Fail: No matching director found for actor
+    Exit: Director sam_raimi for 'crimewave'
+  Exit: brion_james in 'crimewave' as arthur_coddish
+  Exit: dan_nelson in 'crimewave' as waiter
+  Exit: ethan_coen in 'down_from_the_mountain' as himself
+  Exit: jeff_bridges in 'the_big_lebowski' as jeffrey_lebowski__the_dude
+  Exit: joel_coen in 'crimewave' as reporter_at_execution
+  Exit: joel_coen in 'down_from_the_mountain' as himself
+  Exit: john_goodman in 'barton_fink' as charlie_meadows
+  Exit: john_goodman in 'the_big_lebowski' as walter_sobchak
+  Exit: john_turturro in 'barton_fink' as barton_fink
+  Exit: john_turturro in 'the_big_lebowski' as jesus_quintana
+  Exit: paul_l_smith in 'crimewave' as faron_crush
+  Exit: sam_raimi in 'the_hudsucker_proxy' as hudsucker_brainstormer
+  Exit: sidney_cox in 'down_from_the_mountain' as himself
+
+TREE STATISTICS:
+------------------------------
+Total nodes: 147
+Tree depth: 5 levels
+Successful matches: 0
+
+SEARCH PATTERN ANALYSIS:
+------------------------------
+The tree shows Prolog's depth-first search with backtracking.
+✨ Successful matches are highlighted with stars
+✓ Nodes in successful paths are marked with checkmarks
+Failures cause backtracking to try alternative paths

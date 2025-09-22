@@ -1,0 +1,110 @@
+SEARCH TREE VISUALIZATION
+==================================================
+SUCCESSFUL MATCHES FOUND:
+------------------------------
+No successful matches found in this search.
+
+COMPLETE SEARCH TREE:
+------------------------------
+Prolog Actor-Director Search
+  Call: Find actor
+    Call: Find actor
+      Exit: tim_robbins in 'the_hudsucker_proxy' as norville_barnes
+      Redo: Backtrack - try alternative actor
+    Call: Find director
+      Fail: Director search failed
+      Redo: Backtrack - try alternative actor
+    Exit: sam_raimi in 'the_hudsucker_proxy' as hudsucker_brainstormer
+    Exit: tim_robbins in 'the_hudsucker_proxy' as norville_barnes
+  Call: Find actor
+    Exit: tim_robbins in 'the_hudsucker_proxy' as norville_barnes
+    Redo: Backtrack - try alternative actor
+  Call: Find actor
+    Exit: john_turturro in 'barton_fink' as barton_fink
+    Redo: Backtrack - try alternative actor
+  Call: Find actor
+    Exit: john_turturro in 'barton_fink' as barton_fink
+    Redo: Backtrack - try alternative actor
+  Call: Find actor
+    Exit: jeff_bridges in 'the_big_lebowski' as jeffrey_lebowski__the_dude
+    Redo: Backtrack - try alternative actor
+  Call: Find actor
+    Call: Find director
+      Fail: Director search failed
+      Redo: Backtrack - try alternative actor
+    Exit: jeff_bridges in 'the_big_lebowski' as jeffrey_lebowski__the_dude
+  Call: Find actor
+    Call: Find director
+      Fail: Director search failed
+      Redo: Backtrack - try alternative actor
+    Exit: jeff_bridges in 'the_big_lebowski' as jeffrey_lebowski__the_dude
+  Call: Find actor
+    Exit: sidney_cox in 'down_from_the_mountain' as himself
+    Redo: Backtrack - try alternative actor
+  Call: Find actor
+    Exit: sidney_cox in 'down_from_the_mountain' as himself
+    Redo: Backtrack - try alternative actor
+  Call: Find actor
+    Exit: sidney_cox in 'down_from_the_mountain' as himself
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Fail: Director search failed
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Fail: Director search failed
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Fail: Director search failed
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Fail: Director search failed
+    Redo: Backtrack - try alternative actor
+  Call: Find director
+    Call: Find director
+      Exit: Director ethan_coen for 'the_hudsucker_proxy'
+    Exit: Director joel_coen for 'the_hudsucker_proxy'
+  Exit: ethan_coen in 'down_from_the_mountain' as himself
+  Exit: ethan_coen in 'down_from_the_mountain' as himself
+  Exit: ethan_coen in 'down_from_the_mountain' as himself
+  Exit: ethan_coen in 'down_from_the_mountain' as himself
+  Exit: jeff_bridges in 'the_big_lebowski' as jeffrey_lebowski__the_dude
+  Exit: joel_coen in 'down_from_the_mountain' as himself
+  Exit: joel_coen in 'down_from_the_mountain' as himself
+  Exit: joel_coen in 'down_from_the_mountain' as himself
+  Exit: john_goodman in 'barton_fink' as charlie_meadows
+  Exit: john_goodman in 'barton_fink' as charlie_meadows
+  Exit: john_goodman in 'barton_fink' as charlie_meadows
+  Exit: john_goodman in 'the_big_lebowski' as walter_sobchak
+  Exit: john_goodman in 'the_big_lebowski' as walter_sobchak
+  Exit: john_goodman in 'the_big_lebowski' as walter_sobchak
+  Exit: john_goodman in 'the_big_lebowski' as walter_sobchak
+  Exit: john_turturro in 'barton_fink' as barton_fink
+  Exit: john_turturro in 'the_big_lebowski' as jesus_quintana
+  Exit: john_turturro in 'the_big_lebowski' as jesus_quintana
+  Exit: john_turturro in 'the_big_lebowski' as jesus_quintana
+  Exit: john_turturro in 'the_big_lebowski' as jesus_quintana
+  Exit: sam_raimi in 'the_hudsucker_proxy' as hudsucker_brainstormer
+  Exit: sam_raimi in 'the_hudsucker_proxy' as hudsucker_brainstormer
+  Exit: sidney_cox in 'down_from_the_mountain' as himself
+  Redo: Backtrack - try alternative actor
+  Redo: Backtrack - try alternative actor
+  Redo: Backtrack - try alternative actor
+  Redo: Backtrack - try alternative actor
+  Redo: Backtrack - try alternative actor
+  Redo: Backtrack - try alternative actor
+  Redo: Backtrack - try alternative actor
+  Redo: Backtrack - try alternative actor
+  Redo: Backtrack - try alternative actor
+
+TREE STATISTICS:
+------------------------------
+Total nodes: 89
+Tree depth: 3 levels
+Successful matches: 0
+
+SEARCH PATTERN ANALYSIS:
+------------------------------
+The tree shows Prolog's depth-first search with backtracking.
+✨ Successful matches are highlighted with stars
+✓ Nodes in successful paths are marked with checkmarks
+Failures cause backtracking to try alternative paths

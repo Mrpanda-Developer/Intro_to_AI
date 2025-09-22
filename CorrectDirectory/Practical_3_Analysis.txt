@@ -1,0 +1,97 @@
+PRACTICAL 3 – PROLOG SEARCH TREE ANALYSIS
+=========================================
+
+MY PROLOG QUERY
+---------------
+
+Query I used:
+    trace, actor(M, A, _), director(M, D), director(_, A), A \= D.
+
+What I was trying to find:
+    I wanted to find actors who have also directed movies, but specifically 
+    looking at cases where they acted in a movie that was directed by 
+    someone else (not themselves).
+
+Why I chose this query:
+    - It has multiple conditions that create depth in the search tree
+    - It shows interesting relationships in the movie database
+    - It demonstrates backtracking well when actors are also directors
+    - It's complex enough to generate a tree with 3+ levels
+
+How the query works step by step:
+    1. First, find an actor A in some movie M
+    2. Then find who directed that same movie M (call them D)
+    3. Check that actor A has also directed some movie (any movie)
+    4. Make sure that A and D are different people
+
+So basically, I'm looking for actor-directors who worked under other directors.
+
+MY TRACE FILE
+-------------
+
+How I made the trace.txt file:
+    1. Went to SWISH Prolog and loaded Movies_Short.pl
+    2. Typed my query exactly as shown above
+    3. Clicked "Step into" over and over until I got through the whole search
+    4. Copied all the text from the Prolog window into a file called trace.txt
+
+What to expect in the trace:
+    You'll see lots of "Call:" and "Exit:" lines as Prolog tries different 
+    combinations. There are also "Fail:" when things don't work and "Redo:" 
+    when Prolog backtracks to try different options.
+
+READING MY TREE VISUALIZATION
+------------------------------
+
+Files my code creates:
+    - backtracking_search.png (the main tree picture)
+    - backtracking_search.txt (text version if the picture is hard to read)
+
+How to understand the tree:
+
+Colors help see what's happening:
+    - Purple nodes: Prolog starting a new search ("Call:")
+    - Green nodes: Something worked successfully ("Exit:") 
+    - Red nodes: Dead ends where things failed ("Fail:")
+    - Orange nodes: Backtracking to try alternatives ("Redo:")
+    - Blue nodes: Regular steps in between
+
+What the tree shows:
+    The tree follows Prolog's exact search process. It starts at the top 
+    (root) and branches out as Prolog tries different possibilities. When 
+    you see it going down and then suddenly jumping back up, that's 
+    backtracking happening.
+
+Why my tree has good depth:
+    Because my query has multiple conditions that depend on each other, 
+    Prolog has to search through several layers:
+    Level 1: Start the search
+    Level 2: Look for actors
+    Level 3: For each actor, look for their movies
+    Level 4: For each movie, look for the director
+    Level 5: Check if the actor is also a director elsewhere
+    Level 6: Verify the actor and director are different people
+
+This creates a nice deep tree that shows how Prolog really works.
+
+HOW TO RUN MY CODE
+------------------
+To install the libraries, run:
+    pip install treelib graphviz
+
+Steps to run:
+    1. Put my Python file and your trace.txt in the same folder
+    2. Open command prompt/terminal in that folder
+    3. Type: python Akaza.py
+    4. Wait for it to finish - it will tell you what files it created
+
+If you have problems:
+    - Make sure trace.txt is exactly named that way
+    - If you get graphviz errors, you might need to install Graphviz 
+      separately from their website
+    - The text file version (backtracking_search.txt) always works 
+      even if the picture doesn't generate
+
+Submission for Practical 3
+Student ID: i6403910
+Date: 22-09-2025

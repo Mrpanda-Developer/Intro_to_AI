@@ -35,6 +35,9 @@ def parse_prolog_backtracking_tree(trace_lines):
     # Track variable bindings to show how search progresses
     variable_bindings = {}  # Maps variables to their current values
     
+    # Track the current successful path for highlighting
+    current_success_path = []
+    
     for i, line in enumerate(trace_lines):
         line = line.strip()
         if not line:
@@ -76,6 +79,7 @@ def parse_prolog_backtracking_tree(trace_lines):
                 label = f"Call: Find actor{bindings_text}"
                 tree.create_node(label, node_id, parent=parent_id)
                 stack.append((node_id, f"ActorSearch:{actor_var}", depth + 1))
+                current_success_path = []  # Reset success path for new search
                 
         elif line.startswith("Exit:actor("):
             # Actor found successfully - extract concrete values
@@ -90,6 +94,7 @@ def parse_prolog_backtracking_tree(trace_lines):
                 
                 label = f"Exit: {actor} in '{movie}' as {role}"
                 tree.create_node(label, node_id, parent=parent_id)
+                current_success_path.append(node_id)  # Track successful path
                 # Keep stack position for director search
                 
         # --- DIRECTOR SEARCH PATTERN ---  
@@ -122,6 +127,7 @@ def parse_prolog_backtracking_tree(trace_lines):
                 
                 label = f"Exit: Director {director} for '{movie}'"
                 tree.create_node(label, node_id, parent=parent_id)
+                current_success_path.append(node_id)  # Track successful path
                 
         # --- COMPARISON PATTERN (Actor vs Director) ---
         # Handle unification tests (A1 @> A2 pattern)
@@ -141,7 +147,7 @@ def parse_prolog_backtracking_tree(trace_lines):
                 stack.append((node_id, f"Comparison:{left_val}_{right_val}", depth + 1))
                 
         elif line.startswith("Exit:") and "\\=" in line:
-            # Successful comparison
+            # Successful comparison - THIS IS A MATCH!
             match = re.match(r"Exit:([^\\]+)\\([^=]+)=([^\\]+)", line)
             if match:
                 left, op, right = match.groups()
@@ -150,9 +156,21 @@ def parse_prolog_backtracking_tree(trace_lines):
                 left_val = variable_bindings.get(left, left)
                 right_val = variable_bindings.get(right, right)
                 
-                label = f"Exit: MATCH {left_val} @> {right_val}"
+                # HIGHLIGHT MATCHES CLEARLY
+                label = f"🎉 SUCCESSFUL MATCH: {left_val} acted under {right_val} 🎉"
                 tree.create_node(label, node_id, parent=parent_id)
                 successful_matches.append((left_val, right_val))
+                
+                # Track this as a major success
+                current_success_path.append(node_id)
+                
+                # Mark the entire successful path
+                for success_node_id in current_success_path:
+                    success_node = tree.get_node(success_node_id)
+                    if success_node:
+                        # Add success indicator to all nodes in successful path
+                        if "🎉" not in success_node.tag and "SUCCESS" not in success_node.tag:
+                            success_node.tag = "✅ " + success_node.tag
                 
                 # Pop comparison level from stack
                 if len(stack) > 1:
@@ -174,6 +192,7 @@ def parse_prolog_backtracking_tree(trace_lines):
                 label = "Fail: Director search failed"
                 
             tree.create_node(label, node_id, parent=parent_id)
+            current_success_path = []  # Reset success path on failure
             
         elif line.startswith("Redo:director("):
             # Backtracking to try alternative directors
@@ -192,6 +211,7 @@ def parse_prolog_backtracking_tree(trace_lines):
                 stack.pop()
             if len(stack) > 1:
                 stack.pop()
+            current_success_path = []  # Reset success path on actor redo
                 
         # --- SUCCESSFUL ACTOR-DIRECTOR MATCHES ---
         elif line.startswith("Exit:director(") and "_944" in line:
@@ -202,6 +222,7 @@ def parse_prolog_backtracking_tree(trace_lines):
                 parent_id, context, depth = stack[-1]
                 label = f"Exit: Candidate {director} directed '{movie}'"
                 tree.create_node(label, node_id, parent=parent_id)
+                current_success_path.append(node_id)
     
     return tree, successful_matches
 
@@ -283,36 +304,43 @@ def export_tree_to_dot(tree, filename, title):
     for node in tree.all_nodes():
         label = node.tag.replace('"', '\\"')
         
-        # Color coding based on node content type
+        # Color coding based on node content type - MAKE MATCHES STAND OUT
         color = "#e1f5fe"  # Default blue for neutral nodes
         
-        if "Call:" in label:
+        if "🎉 SUCCESSFUL MATCH" in label:
+            color = "#c8e6c9"  # Bright green for successful matches
+            dot_content.append(f'  "{node.identifier}" [label="{label}", fillcolor="{color}", style="filled,bold", penwidth=3.0, fontsize=12];')
+        elif "✅" in label:
+            color = "#e8f5e8"  # Light green for successful path nodes
+            dot_content.append(f'  "{node.identifier}" [label="{label}", fillcolor="{color}", style="filled,bold"];')
+        elif "Call:" in label:
             color = "#f3e5f5"  # Purple for search calls
-        elif "Exit:" in label and "MATCH" in label:
-            color = "#e8f5e8"  # Green for successful matches
+            dot_content.append(f'  "{node.identifier}" [label="{label}", fillcolor="{color}"];')
         elif "Exit:" in label:
             color = "#dcedc8"  # Light green for successful exits
+            dot_content.append(f'  "{node.identifier}" [label="{label}", fillcolor="{color}"];')
         elif "Fail:" in label:
             color = "#ffebee"  # Red for failures
+            dot_content.append(f'  "{node.identifier}" [label="{label}", fillcolor="{color}"];')
         elif "Redo:" in label:
             color = "#fff3e0"  # Orange for backtracking
+            dot_content.append(f'  "{node.identifier}" [label="{label}", fillcolor="{color}"];')
         elif "Binding:" in label:
             color = "#e0f2f1"  # Teal for variable bindings
-        
-        dot_content.append(f'  "{node.identifier}" [label="{label}", fillcolor="{color}"];')
+            dot_content.append(f'  "{node.identifier}" [label="{label}", fillcolor="{color}"];')
+        else:
+            dot_content.append(f'  "{node.identifier}" [label="{label}", fillcolor="{color}"];')
     
     dot_content.append('')
     
-    # --- MAINTAIN PROLOG SEARCH ORDER IN EDGES ---
-    # Group children by their creation order to maintain search sequence
+    # --- HIGHLIGHT SUCCESS PATHS WITH SPECIAL EDGES ---
+    # First add all regular edges
     for node in tree.all_nodes():
-        children = tree.children(node.identifier)
-        if children:
-            # Add ordering constraint to maintain left-to-right search order
-            child_ids = [f'"{child.identifier}"' for child in children]
-            dot_content.append(f'  {{rank=same; {", ".join(child_ids)}}}')
-            
-            for child in children:
+        for child in tree.children(node.identifier):
+            # Make edges in success paths thicker and colored
+            if "🎉" in child.tag or "✅" in child.tag:
+                dot_content.append(f'  "{node.identifier}" -> "{child.identifier}" [color="#2e7d32", penwidth=2.5];')
+            else:
                 dot_content.append(f'  "{node.identifier}" -> "{child.identifier}";')
     
     dot_content.append('}')
@@ -321,21 +349,56 @@ def export_tree_to_dot(tree, filename, title):
     Path(filename).write_text('\n'.join(dot_content), encoding='utf-8')
 
 
-def create_simple_text_tree(tree, filename):
+def create_simple_text_tree(tree, filename, successful_matches):
     """
     Create a simple text representation of the tree for quick reference.
     
     Args:
         tree (Tree): treelib Tree object
         filename (str): Output text filename
+        successful_matches (list): List of successful matches found
     """
-    content = ["Search Tree Text Representation:", "=" * 40]
+    content = ["SEARCH TREE VISUALIZATION", "=" * 50]
+    content.append("SUCCESSFUL MATCHES FOUND:")
+    content.append("-" * 30)
+    
+    if successful_matches:
+        for i, (actor, director) in enumerate(successful_matches, 1):
+            content.append(f"{i}. {actor} acted in a movie directed by {director}")
+    else:
+        content.append("No successful matches found in this search.")
+    
+    content.append("")
+    content.append("COMPLETE SEARCH TREE:")
+    content.append("-" * 30)
     
     for node in tree.expand_tree():
         depth = tree.depth(node)
         node_obj = tree.get_node(node)
         indent = "  " * depth
-        content.append(f"{indent}{node_obj.tag}")
+        
+        # Highlight successful matches and paths in text output
+        if "🎉 SUCCESSFUL MATCH" in node_obj.tag:
+            content.append(f"{indent}✨ {node_obj.tag} ✨")
+        elif "✅" in node_obj.tag:
+            content.append(f"{indent}✓ {node_obj.tag}")
+        else:
+            content.append(f"{indent}{node_obj.tag}")
+    
+    content.append("")
+    content.append("TREE STATISTICS:")
+    content.append("-" * 30)
+    content.append(f"Total nodes: {tree.size()}")
+    content.append(f"Tree depth: {tree.depth()} levels")
+    content.append(f"Successful matches: {len(successful_matches)}")
+    
+    content.append("")
+    content.append("SEARCH PATTERN ANALYSIS:")
+    content.append("-" * 30)
+    content.append("The tree shows Prolog's depth-first search with backtracking.")
+    content.append("✨ Successful matches are highlighted with stars")
+    content.append("✓ Nodes in successful paths are marked with checkmarks")
+    content.append("Failures cause backtracking to try alternative paths")
     
     Path(filename).write_text('\n'.join(content), encoding='utf-8')
 
@@ -367,13 +430,21 @@ def main():
         
         # Export to multiple formats
         export_tree_to_dot(search_tree, "backtracking_search.dot", "Prolog Backtracking Search Tree")
-        create_simple_text_tree(search_tree, "backtracking_search.txt")
+        create_simple_text_tree(search_tree, "backtracking_search.txt", matches)
         
         # --- CREATE MOVIE RELATIONSHIP TREE ---
         print("Creating movie relationship tree...")
         movie_tree = create_movie_relationship_tree(lines)
         export_tree_to_dot(movie_tree, "movie_relationships.dot", "Movie-Actor-Director Relationships")
-        create_simple_text_tree(movie_tree, "movie_relationships.txt")
+        
+        # Simple text version for movie tree
+        movie_content = ["MOVIE-ACTOR-DIRECTOR RELATIONSHIPS", "=" * 40]
+        for node in movie_tree.expand_tree():
+            depth = movie_tree.depth(node)
+            node_obj = movie_tree.get_node(node)
+            indent = "  " * depth
+            movie_content.append(f"{indent}{node_obj.tag}")
+        Path("movie_relationships.txt").write_text('\n'.join(movie_content), encoding='utf-8')
         
         # --- GENERATE PNG VISUALIZATIONS ---
         print("\nGenerating PNG images from DOT files...")
@@ -396,25 +467,28 @@ def main():
         print("PROCESSING COMPLETE")
         print("="*50)
         
-        print(f"\nSearch Results Summary:")
-        print(f"• Found {len(matches)} successful actor-director matches")
-        for i, (left, right) in enumerate(matches, 1):
-            print(f"  {i}. {left} @> {right}")
+        print(f"\n🎉 SUCCESSFUL MATCHES FOUND ({len(matches)} total):")
+        print("-" * 40)
+        if matches:
+            for i, (actor, director) in enumerate(matches, 1):
+                print(f"   {i}. {actor} acted under director {director}")
+        else:
+            print("   No successful matches found in this search.")
         
-        print(f"\nTree Statistics:")
-        print(f"• Backtracking tree: {search_tree.size()} nodes, depth {search_tree.depth()}")
-        print(f"• Movie relationship tree: {movie_tree.size()} nodes")
+        print(f"\n📊 Tree Statistics:")
+        print(f"   • Backtracking tree: {search_tree.size()} nodes, depth {search_tree.depth()}")
+        print(f"   • Movie relationship tree: {movie_tree.size()} nodes")
         
-        print(f"\nGenerated Files:")
-        print(f"• backtracking_search.dot - Graphviz file with search process")
-        print(f"• backtracking_search.png - Visual search tree diagram") 
-        print(f"• backtracking_search.txt - Text representation")
-        print(f"• movie_relationships.dot - Graphviz file with relationships")
-        print(f"• movie_relationships.png - Visual relationship diagram")
-        print(f"• movie_relationships.txt - Text representation")
+        print(f"\n📁 Generated Files:")
+        print(f"   • backtracking_search.dot - Graphviz file with search process")
+        print(f"   • backtracking_search.png - Visual search tree diagram") 
+        print(f"   • backtracking_search.txt - Text representation with highlighted matches")
+        print(f"   • movie_relationships.dot - Graphviz file with relationships")
+        print(f"   • movie_relationships.png - Visual relationship diagram")
+        print(f"   • movie_relationships.txt - Text representation")
         
         # Display text tree for quick verification
-        print(f"\nBacktracking Tree Structure (text):")
+        print(f"\n🌳 Backtracking Tree Structure (text - matches highlighted):")
         search_tree.show(line_type="ascii")
         
     except FileNotFoundError:

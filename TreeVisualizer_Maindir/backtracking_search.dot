@@ -1,0 +1,206 @@
+digraph "Prolog Backtracking Search Tree" {
+  rankdir=TB;
+  nodesep=0.4; ranksep=0.6;
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10];
+  edge [arrowhead=vee, arrowsize=0.8];
+
+  "root" [label="Prolog Actor-Director Search", fillcolor="#e1f5fe"];
+  "n1" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n2" [label="Exit: tim_robbins in 'the_hudsucker_proxy' as norville_barnes", fillcolor="#dcedc8"];
+  "n3" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n4" [label="Exit: tim_robbins in 'the_hudsucker_proxy' as norville_barnes", fillcolor="#dcedc8"];
+  "n7" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n8" [label="Exit: sam_raimi in 'the_hudsucker_proxy' as hudsucker_brainstormer", fillcolor="#dcedc8"];
+  "n11" [label="Call: Find director", fillcolor="#f3e5f5"];
+  "n12" [label="Fail: Director search failed", fillcolor="#ffebee"];
+  "n13" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n14" [label="Exit: sam_raimi in 'the_hudsucker_proxy' as hudsucker_brainstormer", fillcolor="#dcedc8"];
+  "n15" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n16" [label="Exit: tim_robbins in 'the_hudsucker_proxy' as norville_barnes", fillcolor="#dcedc8"];
+  "n19" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n20" [label="Exit: sam_raimi in 'the_hudsucker_proxy' as hudsucker_brainstormer", fillcolor="#dcedc8"];
+  "n23" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n24" [label="Exit: john_turturro in 'barton_fink' as barton_fink", fillcolor="#dcedc8"];
+  "n25" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n26" [label="Exit: john_turturro in 'barton_fink' as barton_fink", fillcolor="#dcedc8"];
+  "n29" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n30" [label="Exit: john_goodman in 'barton_fink' as charlie_meadows", fillcolor="#dcedc8"];
+  "n33" [label="Call: Find director", fillcolor="#f3e5f5"];
+  "n34" [label="Fail: Director search failed", fillcolor="#ffebee"];
+  "n35" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n36" [label="Exit: john_goodman in 'barton_fink' as charlie_meadows", fillcolor="#dcedc8"];
+  "n37" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n38" [label="Exit: john_turturro in 'barton_fink' as barton_fink", fillcolor="#dcedc8"];
+  "n41" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n42" [label="Exit: john_goodman in 'barton_fink' as charlie_meadows", fillcolor="#dcedc8"];
+  "n45" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n46" [label="Exit: jeff_bridges in 'the_big_lebowski' as jeffrey_lebowski__the_dude", fillcolor="#dcedc8"];
+  "n47" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n48" [label="Exit: jeff_bridges in 'the_big_lebowski' as jeffrey_lebowski__the_dude", fillcolor="#dcedc8"];
+  "n51" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n52" [label="Exit: john_goodman in 'the_big_lebowski' as walter_sobchak", fillcolor="#dcedc8"];
+  "n55" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n56" [label="Exit: john_turturro in 'the_big_lebowski' as jesus_quintana", fillcolor="#dcedc8"];
+  "n59" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n60" [label="Exit: john_goodman in 'the_big_lebowski' as walter_sobchak", fillcolor="#dcedc8"];
+  "n61" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n62" [label="Exit: jeff_bridges in 'the_big_lebowski' as jeffrey_lebowski__the_dude", fillcolor="#dcedc8"];
+  "n65" [label="Call: Find director", fillcolor="#f3e5f5"];
+  "n66" [label="Fail: Director search failed", fillcolor="#ffebee"];
+  "n67" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n68" [label="Exit: john_goodman in 'the_big_lebowski' as walter_sobchak", fillcolor="#dcedc8"];
+  "n71" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n72" [label="Exit: john_turturro in 'the_big_lebowski' as jesus_quintana", fillcolor="#dcedc8"];
+  "n75" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n76" [label="Exit: john_turturro in 'the_big_lebowski' as jesus_quintana", fillcolor="#dcedc8"];
+  "n77" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n78" [label="Exit: jeff_bridges in 'the_big_lebowski' as jeffrey_lebowski__the_dude", fillcolor="#dcedc8"];
+  "n81" [label="Call: Find director", fillcolor="#f3e5f5"];
+  "n82" [label="Fail: Director search failed", fillcolor="#ffebee"];
+  "n83" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n84" [label="Exit: john_goodman in 'the_big_lebowski' as walter_sobchak", fillcolor="#dcedc8"];
+  "n87" [label="Call: Find director", fillcolor="#f3e5f5"];
+  "n88" [label="Fail: Director search failed", fillcolor="#ffebee"];
+  "n89" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n90" [label="Exit: john_turturro in 'the_big_lebowski' as jesus_quintana", fillcolor="#dcedc8"];
+  "n93" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n94" [label="Exit: sidney_cox in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n95" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n96" [label="Exit: sidney_cox in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n99" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n100" [label="Exit: ethan_coen in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n103" [label="Call: Find director", fillcolor="#f3e5f5"];
+  "n104" [label="Fail: Director search failed", fillcolor="#ffebee"];
+  "n105" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n106" [label="Exit: joel_coen in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n109" [label="Call: Find director", fillcolor="#f3e5f5"];
+  "n110" [label="Fail: Director search failed", fillcolor="#ffebee"];
+  "n111" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n112" [label="Exit: ethan_coen in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n113" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n114" [label="Exit: sidney_cox in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n117" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n118" [label="Exit: ethan_coen in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n121" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n122" [label="Exit: joel_coen in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n125" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n126" [label="Exit: joel_coen in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n127" [label="Call: Find actor", fillcolor="#f3e5f5"];
+  "n128" [label="Exit: sidney_cox in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n131" [label="Redo: Backtrack - try alternative actor", fillcolor="#fff3e0"];
+  "n132" [label="Exit: ethan_coen in 'down_from_the_mountain' as himself", fillcolor="#dcedc8"];
+  "n135" [label="Call: Find director", fillcolor="#f3e5f5"];
+  "n136" [label="Exit: Director joel_coen for 'the_hudsucker_proxy'", fillcolor="#dcedc8"];
+  "n137" [label="Call: Find director", fillcolor="#f3e5f5"];
+  "n138" [label="Exit: Director ethan_coen for 'the_hudsucker_proxy'", fillcolor="#dcedc8"];
+
+  {rank=same; "n1", "n14", "n15", "n20", "n23", "n24", "n25", "n30", "n33", "n36", "n37", "n42", "n45", "n46", "n47", "n52", "n55", "n56", "n59", "n60", "n61", "n68", "n71", "n72", "n75", "n76", "n77", "n84", "n87", "n90", "n93", "n94", "n95", "n100", "n103", "n106", "n109", "n112", "n113", "n118", "n121", "n122", "n125", "n126", "n127", "n132", "n135"}
+  "root" -> "n1";
+  "root" -> "n14";
+  "root" -> "n15";
+  "root" -> "n20";
+  "root" -> "n23";
+  "root" -> "n24";
+  "root" -> "n25";
+  "root" -> "n30";
+  "root" -> "n33";
+  "root" -> "n36";
+  "root" -> "n37";
+  "root" -> "n42";
+  "root" -> "n45";
+  "root" -> "n46";
+  "root" -> "n47";
+  "root" -> "n52";
+  "root" -> "n55";
+  "root" -> "n56";
+  "root" -> "n59";
+  "root" -> "n60";
+  "root" -> "n61";
+  "root" -> "n68";
+  "root" -> "n71";
+  "root" -> "n72";
+  "root" -> "n75";
+  "root" -> "n76";
+  "root" -> "n77";
+  "root" -> "n84";
+  "root" -> "n87";
+  "root" -> "n90";
+  "root" -> "n93";
+  "root" -> "n94";
+  "root" -> "n95";
+  "root" -> "n100";
+  "root" -> "n103";
+  "root" -> "n106";
+  "root" -> "n109";
+  "root" -> "n112";
+  "root" -> "n113";
+  "root" -> "n118";
+  "root" -> "n121";
+  "root" -> "n122";
+  "root" -> "n125";
+  "root" -> "n126";
+  "root" -> "n127";
+  "root" -> "n132";
+  "root" -> "n135";
+  {rank=same; "n2", "n3", "n8", "n11"}
+  "n1" -> "n2";
+  "n1" -> "n3";
+  "n1" -> "n8";
+  "n1" -> "n11";
+  {rank=same; "n4", "n7"}
+  "n3" -> "n4";
+  "n3" -> "n7";
+  {rank=same; "n12", "n13"}
+  "n11" -> "n12";
+  "n11" -> "n13";
+  {rank=same; "n16", "n19"}
+  "n15" -> "n16";
+  "n15" -> "n19";
+  {rank=same; "n26", "n29"}
+  "n25" -> "n26";
+  "n25" -> "n29";
+  {rank=same; "n34", "n35"}
+  "n33" -> "n34";
+  "n33" -> "n35";
+  {rank=same; "n38", "n41"}
+  "n37" -> "n38";
+  "n37" -> "n41";
+  {rank=same; "n48", "n51"}
+  "n47" -> "n48";
+  "n47" -> "n51";
+  {rank=same; "n62", "n65"}
+  "n61" -> "n62";
+  "n61" -> "n65";
+  {rank=same; "n66", "n67"}
+  "n65" -> "n66";
+  "n65" -> "n67";
+  {rank=same; "n78", "n81"}
+  "n77" -> "n78";
+  "n77" -> "n81";
+  {rank=same; "n82", "n83"}
+  "n81" -> "n82";
+  "n81" -> "n83";
+  {rank=same; "n88", "n89"}
+  "n87" -> "n88";
+  "n87" -> "n89";
+  {rank=same; "n96", "n99"}
+  "n95" -> "n96";
+  "n95" -> "n99";
+  {rank=same; "n104", "n105"}
+  "n103" -> "n104";
+  "n103" -> "n105";
+  {rank=same; "n110", "n111"}
+  "n109" -> "n110";
+  "n109" -> "n111";
+  {rank=same; "n114", "n117"}
+  "n113" -> "n114";
+  "n113" -> "n117";
+  {rank=same; "n128", "n131"}
+  "n127" -> "n128";
+  "n127" -> "n131";
+  {rank=same; "n136", "n137"}
+  "n135" -> "n136";
+  "n135" -> "n137";
+  {rank=same; "n138"}
+  "n137" -> "n138";
+}

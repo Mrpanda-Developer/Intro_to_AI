@@ -1,0 +1,9 @@
+digraph "Movie-Actor-Director Relationships" {
+  rankdir=TB;
+  nodesep=0.4; ranksep=0.6;
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10];
+  edge [arrowhead=vee, arrowsize=0.8];
+
+  "root" [label="Movie Relationships Found", fillcolor="#e1f5fe"];
+
+}

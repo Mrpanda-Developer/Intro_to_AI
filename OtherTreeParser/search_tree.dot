@@ -1,282 +1,191 @@
 digraph tree {
-	"root" [label="root", shape=circle]
-	"n1" [label="Call: actor(_6258,_6278,_6328)", shape=circle]
-	"n26" [label="Call: actor(barton_fink,_896,_956)", shape=circle]
-	"n38" [label="Call: actor(barton_fink,_896,_956)", shape=circle]
-	"n96" [label="Call: actor(down_from_the_mountain,_896,_956)", shape=circle]
-	"n114" [label="Call: actor(down_from_the_mountain,_896,_956)", shape=circle]
-	"n128" [label="Call: actor(down_from_the_mountain,_896,_956)", shape=circle]
-	"n48" [label="Call: actor(the_big_lebowski,_896,_956)", shape=circle]
-	"n62" [label="Call: actor(the_big_lebowski,_896,_956)", shape=circle]
-	"n78" [label="Call: actor(the_big_lebowski,_896,_956)", shape=circle]
-	"n4" [label="Call: actor(the_hudsucker_proxy,_896,_956)", shape=circle]
-	"n16" [label="Call: actor(the_hudsucker_proxy,_896,_956)", shape=circle]
-	"n136" [label="Call: director(_978,joel_coen)", shape=circle]
-	"n66" [label="Call: director(_978,john_goodman)", shape=circle]
-	"n34" [label="Call: director(_978,john_turturro)", shape=circle]
-	"n82" [label="Call: director(_978,john_turturro)", shape=circle]
-	"n88" [label="Call: director(_978,john_turturro)", shape=circle]
-	"n104" [label="Call: director(_978,sidney_cox)", shape=circle]
-	"n110" [label="Call: director(_978,sidney_cox)", shape=circle]
-	"n12" [label="Call: director(_978,tim_robbins)", shape=circle]
-	"n138" [label="Call: director(_984,ethan_coen)", shape=circle]
-	"n120" [label="Call: ethan_coen@>ethan_coen", shape=circle]
-	"n124" [label="Call: ethan_coen@>joel_coen", shape=circle]
-	"n116" [label="Call: ethan_coen@>sidney_cox", shape=circle]
-	"n50" [label="Call: jeff_bridges@>jeff_bridges", shape=circle]
-	"n54" [label="Call: jeff_bridges@>john_goodman", shape=circle]
-	"n58" [label="Call: jeff_bridges@>john_turturro", shape=circle]
-	"n134" [label="Call: joel_coen@>ethan_coen", shape=circle]
-	"n130" [label="Call: joel_coen@>sidney_cox", shape=circle]
-	"n64" [label="Call: john_goodman@>jeff_bridges", shape=circle]
-	"n44" [label="Call: john_goodman@>john_goodman", shape=circle]
-	"n70" [label="Call: john_goodman@>john_goodman", shape=circle]
-	"n40" [label="Call: john_goodman@>john_turturro", shape=circle]
-	"n74" [label="Call: john_goodman@>john_turturro", shape=circle]
-	"n80" [label="Call: john_turturro@>jeff_bridges", shape=circle]
-	"n32" [label="Call: john_turturro@>john_goodman", shape=circle]
-	"n86" [label="Call: john_turturro@>john_goodman", shape=circle]
-	"n28" [label="Call: john_turturro@>john_turturro", shape=circle]
-	"n92" [label="Call: john_turturro@>john_turturro", shape=circle]
-	"n22" [label="Call: sam_raimi@>sam_raimi", shape=circle]
-	"n18" [label="Call: sam_raimi@>tim_robbins", shape=circle]
-	"n102" [label="Call: sidney_cox@>ethan_coen", shape=circle]
-	"n108" [label="Call: sidney_cox@>joel_coen", shape=circle]
-	"n98" [label="Call: sidney_cox@>sidney_cox", shape=circle]
-	"n10" [label="Call: tim_robbins@>sam_raimi", shape=circle]
-	"n6" [label="Call: tim_robbins@>tim_robbins", shape=circle]
-	"n31" [label="Exit: actor(barton_fink,john_goodman,charlie_meadows) ✅", shape=circle]
-	"n37" [label="Exit: actor(barton_fink,john_goodman,charlie_meadows) ✅", shape=circle]
-	"n43" [label="Exit: actor(barton_fink,john_goodman,charlie_meadows) ✅", shape=circle]
-	"n25" [label="Exit: actor(barton_fink,john_turturro,barton_fink) ✅", shape=circle]
-	"n101" [label="Exit: actor(down_from_the_mountain,ethan_coen,himself) ✅", shape=circle]
-	"n113" [label="Exit: actor(down_from_the_mountain,ethan_coen,himself) ✅", shape=circle]
-	"n119" [label="Exit: actor(down_from_the_mountain,ethan_coen,himself) ✅", shape=circle]
-	"n133" [label="Exit: actor(down_from_the_mountain,ethan_coen,himself) ✅", shape=circle]
-	"n107" [label="Exit: actor(down_from_the_mountain,joel_coen,himself) ✅", shape=circle]
-	"n123" [label="Exit: actor(down_from_the_mountain,joel_coen,himself) ✅", shape=circle]
-	"n127" [label="Exit: actor(down_from_the_mountain,joel_coen,himself) ✅", shape=circle]
-	"n95" [label="Exit: actor(down_from_the_mountain,sidney_cox,himself) ✅", shape=circle]
-	"n47" [label="Exit: actor(the_big_lebowski,jeff_bridges,jeffrey_lebowski__the_dude) ✅", shape=circle]
-	"n53" [label="Exit: actor(the_big_lebowski,john_goodman,walter_sobchak) ✅", shape=circle]
-	"n61" [label="Exit: actor(the_big_lebowski,john_goodman,walter_sobchak) ✅", shape=circle]
-	"n69" [label="Exit: actor(the_big_lebowski,john_goodman,walter_sobchak) ✅", shape=circle]
-	"n85" [label="Exit: actor(the_big_lebowski,john_goodman,walter_sobchak) ✅", shape=circle]
-	"n57" [label="Exit: actor(the_big_lebowski,john_turturro,jesus_quintana) ✅", shape=circle]
-	"n73" [label="Exit: actor(the_big_lebowski,john_turturro,jesus_quintana) ✅", shape=circle]
-	"n77" [label="Exit: actor(the_big_lebowski,john_turturro,jesus_quintana) ✅", shape=circle]
-	"n91" [label="Exit: actor(the_big_lebowski,john_turturro,jesus_quintana) ✅", shape=circle]
-	"n9" [label="Exit: actor(the_hudsucker_proxy,sam_raimi,hudsucker_brainstormer) ✅", shape=circle]
-	"n15" [label="Exit: actor(the_hudsucker_proxy,sam_raimi,hudsucker_brainstormer) ✅", shape=circle]
-	"n21" [label="Exit: actor(the_hudsucker_proxy,sam_raimi,hudsucker_brainstormer) ✅", shape=circle]
-	"n3" [label="Exit: actor(the_hudsucker_proxy,tim_robbins,norville_barnes) ✅", shape=circle]
-	"n14" [label="Redo: actor(_872,_892,_942) 🔄", shape=circle]
-	"n24" [label="Redo: actor(_872,_892,_942) 🔄", shape=circle]
-	"n36" [label="Redo: actor(_872,_892,_942) 🔄", shape=circle]
-	"n46" [label="Redo: actor(_872,_892,_942) 🔄", shape=circle]
-	"n60" [label="Redo: actor(_872,_892,_942) 🔄", shape=circle]
-	"n76" [label="Redo: actor(_872,_892,_942) 🔄", shape=circle]
-	"n94" [label="Redo: actor(_872,_892,_942) 🔄", shape=circle]
-	"n112" [label="Redo: actor(_872,_892,_942) 🔄", shape=circle]
-	"n126" [label="Redo: actor(_872,_892,_942) 🔄", shape=circle]
-	"n30" [label="Redo: actor(barton_fink,_896,_956) 🔄", shape=circle]
-	"n42" [label="Redo: actor(barton_fink,_896,_956) 🔄", shape=circle]
-	"n100" [label="Redo: actor(down_from_the_mountain,_896,_956) 🔄", shape=circle]
-	"n106" [label="Redo: actor(down_from_the_mountain,_896,_956) 🔄", shape=circle]
-	"n118" [label="Redo: actor(down_from_the_mountain,_896,_956) 🔄", shape=circle]
-	"n122" [label="Redo: actor(down_from_the_mountain,_896,_956) 🔄", shape=circle]
-	"n132" [label="Redo: actor(down_from_the_mountain,_896,_956) 🔄", shape=circle]
-	"n52" [label="Redo: actor(the_big_lebowski,_896,_956) 🔄", shape=circle]
-	"n56" [label="Redo: actor(the_big_lebowski,_896,_956) 🔄", shape=circle]
-	"n68" [label="Redo: actor(the_big_lebowski,_896,_956) 🔄", shape=circle]
-	"n72" [label="Redo: actor(the_big_lebowski,_896,_956) 🔄", shape=circle]
-	"n84" [label="Redo: actor(the_big_lebowski,_896,_956) 🔄", shape=circle]
-	"n90" [label="Redo: actor(the_big_lebowski,_896,_956) 🔄", shape=circle]
-	"n8" [label="Redo: actor(the_hudsucker_proxy,_896,_956) 🔄", shape=circle]
-	"n20" [label="Redo: actor(the_hudsucker_proxy,_896,_956) 🔄", shape=circle]
-	"n2" [label="Exit: actor(the_hudsucker_proxy,tim_robbins,norville_barnes) ✅", shape=circle]
-	"n27" [label="Exit: actor(barton_fink,john_turturro,barton_fink) ✅", shape=circle]
-	"n39" [label="Exit: actor(barton_fink,john_turturro,barton_fink) ✅", shape=circle]
-	"n97" [label="Exit: actor(down_from_the_mountain,sidney_cox,himself) ✅", shape=circle]
-	"n115" [label="Exit: actor(down_from_the_mountain,sidney_cox,himself) ✅", shape=circle]
-	"n129" [label="Exit: actor(down_from_the_mountain,sidney_cox,himself) ✅", shape=circle]
-	"n49" [label="Exit: actor(the_big_lebowski,jeff_bridges,jeffrey_lebowski__the_dude) ✅", shape=circle]
-	"n63" [label="Exit: actor(the_big_lebowski,jeff_bridges,jeffrey_lebowski__the_dude) ✅", shape=circle]
-	"n79" [label="Exit: actor(the_big_lebowski,jeff_bridges,jeffrey_lebowski__the_dude) ✅", shape=circle]
-	"n5" [label="Exit: actor(the_hudsucker_proxy,tim_robbins,norville_barnes) ✅", shape=circle]
-	"n17" [label="Exit: actor(the_hudsucker_proxy,tim_robbins,norville_barnes) ✅", shape=circle]
-	"n137" [label="Exit: director(the_hudsucker_proxy,joel_coen) ✅", shape=circle]
-	"n67" [label="Fail: director(_978,john_goodman) ❌", shape=circle]
-	"n35" [label="Fail: director(_978,john_turturro) ❌", shape=circle]
-	"n83" [label="Fail: director(_978,john_turturro) ❌", shape=circle]
-	"n89" [label="Fail: director(_978,john_turturro) ❌", shape=circle]
-	"n105" [label="Fail: director(_978,sidney_cox) ❌", shape=circle]
-	"n111" [label="Fail: director(_978,sidney_cox) ❌", shape=circle]
-	"n13" [label="Fail: director(_978,tim_robbins) ❌", shape=circle]
-	"n139" [label="Exit: director(the_hudsucker_proxy,ethan_coen) ✅", shape=circle]
-	"n121" [label="Fail: ethan_coen@>ethan_coen ❌", shape=circle]
-	"n125" [label="Fail: ethan_coen@>joel_coen ❌", shape=circle]
-	"n117" [label="Fail: ethan_coen@>sidney_cox ❌", shape=circle]
-	"n51" [label="Fail: jeff_bridges@>jeff_bridges ❌", shape=circle]
-	"n55" [label="Fail: jeff_bridges@>john_goodman ❌", shape=circle]
-	"n59" [label="Fail: jeff_bridges@>john_turturro ❌", shape=circle]
-	"n135" [label="Exit: joel_coen@>ethan_coen ✅", shape=circle]
-	"n131" [label="Fail: joel_coen@>sidney_cox ❌", shape=circle]
-	"n65" [label="Exit: john_goodman@>jeff_bridges ✅", shape=circle]
-	"n45" [label="Fail: john_goodman@>john_goodman ❌", shape=circle]
-	"n71" [label="Fail: john_goodman@>john_goodman ❌", shape=circle]
-	"n41" [label="Fail: john_goodman@>john_turturro ❌", shape=circle]
-	"n75" [label="Fail: john_goodman@>john_turturro ❌", shape=circle]
-	"n81" [label="Exit: john_turturro@>jeff_bridges ✅", shape=circle]
-	"n33" [label="Exit: john_turturro@>john_goodman ✅", shape=circle]
-	"n87" [label="Exit: john_turturro@>john_goodman ✅", shape=circle]
-	"n29" [label="Fail: john_turturro@>john_turturro ❌", shape=circle]
-	"n93" [label="Fail: john_turturro@>john_turturro ❌", shape=circle]
-	"n23" [label="Fail: sam_raimi@>sam_raimi ❌", shape=circle]
-	"n19" [label="Fail: sam_raimi@>tim_robbins ❌", shape=circle]
-	"n103" [label="Exit: sidney_cox@>ethan_coen ✅", shape=circle]
-	"n109" [label="Exit: sidney_cox@>joel_coen ✅", shape=circle]
-	"n99" [label="Fail: sidney_cox@>sidney_cox ❌", shape=circle]
-	"n11" [label="Exit: tim_robbins@>sam_raimi ✅", shape=circle]
-	"n7" [label="Fail: tim_robbins@>tim_robbins ❌", shape=circle]
+  rankdir=TB;
+  node [shape=rectangle, fontname="Arial", fontsize=10];
+  edge [arrowhead=vee];
+  splines=false;
+  nodesep=0.2;
+  ranksep=0.3;
 
-	"root" -> "n1"
-	"root" -> "n3"
-	"root" -> "n4"
-	"root" -> "n6"
-	"root" -> "n8"
-	"root" -> "n9"
-	"root" -> "n10"
-	"root" -> "n12"
-	"root" -> "n14"
-	"root" -> "n15"
-	"root" -> "n16"
-	"root" -> "n18"
-	"root" -> "n20"
-	"root" -> "n21"
-	"root" -> "n22"
-	"root" -> "n24"
-	"root" -> "n25"
-	"root" -> "n26"
-	"root" -> "n28"
-	"root" -> "n30"
-	"root" -> "n31"
-	"root" -> "n32"
-	"root" -> "n34"
-	"root" -> "n36"
-	"root" -> "n37"
-	"root" -> "n38"
-	"root" -> "n40"
-	"root" -> "n42"
-	"root" -> "n43"
-	"root" -> "n44"
-	"root" -> "n46"
-	"root" -> "n47"
-	"root" -> "n48"
-	"root" -> "n50"
-	"root" -> "n52"
-	"root" -> "n53"
-	"root" -> "n54"
-	"root" -> "n56"
-	"root" -> "n57"
-	"root" -> "n58"
-	"root" -> "n60"
-	"root" -> "n61"
-	"root" -> "n62"
-	"root" -> "n64"
-	"root" -> "n66"
-	"root" -> "n68"
-	"root" -> "n69"
-	"root" -> "n70"
-	"root" -> "n72"
-	"root" -> "n73"
-	"root" -> "n74"
-	"root" -> "n76"
-	"root" -> "n77"
-	"root" -> "n78"
-	"root" -> "n80"
-	"root" -> "n82"
-	"root" -> "n84"
-	"root" -> "n85"
-	"root" -> "n86"
-	"root" -> "n88"
-	"root" -> "n90"
-	"root" -> "n91"
-	"root" -> "n92"
-	"root" -> "n94"
-	"root" -> "n95"
-	"root" -> "n96"
-	"root" -> "n98"
-	"root" -> "n100"
-	"root" -> "n101"
-	"root" -> "n102"
-	"root" -> "n104"
-	"root" -> "n106"
-	"root" -> "n107"
-	"root" -> "n108"
-	"root" -> "n110"
-	"root" -> "n112"
-	"root" -> "n113"
-	"root" -> "n114"
-	"root" -> "n116"
-	"root" -> "n118"
-	"root" -> "n119"
-	"root" -> "n120"
-	"root" -> "n122"
-	"root" -> "n123"
-	"root" -> "n124"
-	"root" -> "n126"
-	"root" -> "n127"
-	"root" -> "n128"
-	"root" -> "n130"
-	"root" -> "n132"
-	"root" -> "n133"
-	"root" -> "n134"
-	"root" -> "n136"
-	"root" -> "n138"
-	"n1" -> "n2"
-	"n26" -> "n27"
-	"n38" -> "n39"
-	"n96" -> "n97"
-	"n114" -> "n115"
-	"n128" -> "n129"
-	"n48" -> "n49"
-	"n62" -> "n63"
-	"n78" -> "n79"
-	"n4" -> "n5"
-	"n16" -> "n17"
-	"n136" -> "n137"
-	"n66" -> "n67"
-	"n34" -> "n35"
-	"n82" -> "n83"
-	"n88" -> "n89"
-	"n104" -> "n105"
-	"n110" -> "n111"
-	"n12" -> "n13"
-	"n138" -> "n139"
-	"n120" -> "n121"
-	"n124" -> "n125"
-	"n116" -> "n117"
-	"n50" -> "n51"
-	"n54" -> "n55"
-	"n58" -> "n59"
-	"n134" -> "n135"
-	"n130" -> "n131"
-	"n64" -> "n65"
-	"n44" -> "n45"
-	"n70" -> "n71"
-	"n40" -> "n41"
-	"n74" -> "n75"
-	"n80" -> "n81"
-	"n32" -> "n33"
-	"n86" -> "n87"
-	"n28" -> "n29"
-	"n92" -> "n93"
-	"n22" -> "n23"
-	"n18" -> "n19"
-	"n102" -> "n103"
-	"n108" -> "n109"
-	"n98" -> "n99"
-	"n10" -> "n11"
-	"n6" -> "n7"
+  "root" [label="root"];
+  "n1" [label="Call: actor(_6258,_6278,_6328)"];
+  "n2" [label="Exit: actor(the_hudsucker_proxy,tim_robbins,norville_barnes) ✅"];
+  "n4" [label="Call: actor(the_hudsucker_proxy,_896,_956)"];
+  "n5" [label="Exit: actor(the_hudsucker_proxy,tim_robbins,norville_barnes) ✅"];
+  "n6" [label="Call: tim_robbins@>tim_robbins"];
+  "n7" [label="Fail: tim_robbins@>tim_robbins ❌"];
+  "n10" [label="Call: tim_robbins@>sam_raimi"];
+  "n11" [label="Exit: tim_robbins@>sam_raimi ✅"];
+  "n12" [label="Call: director(_978,tim_robbins)"];
+  "n13" [label="Fail: director(_978,tim_robbins) ❌"];
+  "n16" [label="Call: actor(the_hudsucker_proxy,_896,_956)"];
+  "n17" [label="Exit: actor(the_hudsucker_proxy,tim_robbins,norville_barnes) ✅"];
+  "n18" [label="Call: sam_raimi@>tim_robbins"];
+  "n19" [label="Fail: sam_raimi@>tim_robbins ❌"];
+  "n22" [label="Call: sam_raimi@>sam_raimi"];
+  "n23" [label="Fail: sam_raimi@>sam_raimi ❌"];
+  "n26" [label="Call: actor(barton_fink,_896,_956)"];
+  "n27" [label="Exit: actor(barton_fink,john_turturro,barton_fink) ✅"];
+  "n28" [label="Call: john_turturro@>john_turturro"];
+  "n29" [label="Fail: john_turturro@>john_turturro ❌"];
+  "n32" [label="Call: john_turturro@>john_goodman"];
+  "n33" [label="Exit: john_turturro@>john_goodman ✅"];
+  "n34" [label="Call: director(_978,john_turturro)"];
+  "n35" [label="Fail: director(_978,john_turturro) ❌"];
+  "n38" [label="Call: actor(barton_fink,_896,_956)"];
+  "n39" [label="Exit: actor(barton_fink,john_turturro,barton_fink) ✅"];
+  "n40" [label="Call: john_goodman@>john_turturro"];
+  "n41" [label="Fail: john_goodman@>john_turturro ❌"];
+  "n44" [label="Call: john_goodman@>john_goodman"];
+  "n45" [label="Fail: john_goodman@>john_goodman ❌"];
+  "n48" [label="Call: actor(the_big_lebowski,_896,_956)"];
+  "n49" [label="Exit: actor(the_big_lebowski,jeff_bridges,jeffrey_lebowski__the_dude) ✅"];
+  "n50" [label="Call: jeff_bridges@>jeff_bridges"];
+  "n51" [label="Fail: jeff_bridges@>jeff_bridges ❌"];
+  "n54" [label="Call: jeff_bridges@>john_goodman"];
+  "n55" [label="Fail: jeff_bridges@>john_goodman ❌"];
+  "n58" [label="Call: jeff_bridges@>john_turturro"];
+  "n59" [label="Fail: jeff_bridges@>john_turturro ❌"];
+  "n62" [label="Call: actor(the_big_lebowski,_896,_956)"];
+  "n63" [label="Exit: actor(the_big_lebowski,jeff_bridges,jeffrey_lebowski__the_dude) ✅"];
+  "n64" [label="Call: john_goodman@>jeff_bridges"];
+  "n65" [label="Exit: john_goodman@>jeff_bridges ✅"];
+  "n66" [label="Call: director(_978,john_goodman)"];
+  "n67" [label="Fail: director(_978,john_goodman) ❌"];
+  "n70" [label="Call: john_goodman@>john_goodman"];
+  "n71" [label="Fail: john_goodman@>john_goodman ❌"];
+  "n74" [label="Call: john_goodman@>john_turturro"];
+  "n75" [label="Fail: john_goodman@>john_turturro ❌"];
+  "n78" [label="Call: actor(the_big_lebowski,_896,_956)"];
+  "n79" [label="Exit: actor(the_big_lebowski,jeff_bridges,jeffrey_lebowski__the_dude) ✅"];
+  "n80" [label="Call: john_turturro@>jeff_bridges"];
+  "n81" [label="Exit: john_turturro@>jeff_bridges ✅"];
+  "n82" [label="Call: director(_978,john_turturro)"];
+  "n83" [label="Fail: director(_978,john_turturro) ❌"];
+  "n86" [label="Call: john_turturro@>john_goodman"];
+  "n87" [label="Exit: john_turturro@>john_goodman ✅"];
+  "n88" [label="Call: director(_978,john_turturro)"];
+  "n89" [label="Fail: director(_978,john_turturro) ❌"];
+  "n92" [label="Call: john_turturro@>john_turturro"];
+  "n93" [label="Fail: john_turturro@>john_turturro ❌"];
+  "n96" [label="Call: actor(down_from_the_mountain,_896,_956)"];
+  "n97" [label="Exit: actor(down_from_the_mountain,sidney_cox,himself) ✅"];
+  "n98" [label="Call: sidney_cox@>sidney_cox"];
+  "n99" [label="Fail: sidney_cox@>sidney_cox ❌"];
+  "n102" [label="Call: sidney_cox@>ethan_coen"];
+  "n103" [label="Exit: sidney_cox@>ethan_coen ✅"];
+  "n104" [label="Call: director(_978,sidney_cox)"];
+  "n105" [label="Fail: director(_978,sidney_cox) ❌"];
+  "n108" [label="Call: sidney_cox@>joel_coen"];
+  "n109" [label="Exit: sidney_cox@>joel_coen ✅"];
+  "n110" [label="Call: director(_978,sidney_cox)"];
+  "n111" [label="Fail: director(_978,sidney_cox) ❌"];
+  "n114" [label="Call: actor(down_from_the_mountain,_896,_956)"];
+  "n115" [label="Exit: actor(down_from_the_mountain,sidney_cox,himself) ✅"];
+  "n116" [label="Call: ethan_coen@>sidney_cox"];
+  "n117" [label="Fail: ethan_coen@>sidney_cox ❌"];
+  "n120" [label="Call: ethan_coen@>ethan_coen"];
+  "n121" [label="Fail: ethan_coen@>ethan_coen ❌"];
+  "n124" [label="Call: ethan_coen@>joel_coen"];
+  "n125" [label="Fail: ethan_coen@>joel_coen ❌"];
+  "n128" [label="Call: actor(down_from_the_mountain,_896,_956)"];
+  "n129" [label="Exit: actor(down_from_the_mountain,sidney_cox,himself) ✅"];
+  "n130" [label="Call: joel_coen@>sidney_cox"];
+  "n131" [label="Fail: joel_coen@>sidney_cox ❌"];
+  "n134" [label="Call: joel_coen@>ethan_coen"];
+  "n135" [label="Exit: joel_coen@>ethan_coen ✅"];
+  "n136" [label="Call: director(_978,joel_coen)"];
+  "n137" [label="Exit: director(the_hudsucker_proxy,joel_coen) ✅"];
+  "n138" [label="Call: director(_984,ethan_coen)"];
+  "n139" [label="Exit: director(the_hudsucker_proxy,ethan_coen) ✅"];
+
+  "root" -> "n1";
+  "root" -> "n4";
+  "root" -> "n6";
+  "root" -> "n10";
+  "root" -> "n12";
+  "root" -> "n16";
+  "root" -> "n18";
+  "root" -> "n22";
+  "root" -> "n26";
+  "root" -> "n28";
+  "root" -> "n32";
+  "root" -> "n34";
+  "root" -> "n38";
+  "root" -> "n40";
+  "root" -> "n44";
+  "root" -> "n48";
+  "root" -> "n50";
+  "root" -> "n54";
+  "root" -> "n58";
+  "root" -> "n62";
+  "root" -> "n64";
+  "root" -> "n66";
+  "root" -> "n70";
+  "root" -> "n74";
+  "root" -> "n78";
+  "root" -> "n80";
+  "root" -> "n82";
+  "root" -> "n86";
+  "root" -> "n88";
+  "root" -> "n92";
+  "root" -> "n96";
+  "root" -> "n98";
+  "root" -> "n102";
+  "root" -> "n104";
+  "root" -> "n108";
+  "root" -> "n110";
+  "root" -> "n114";
+  "root" -> "n116";
+  "root" -> "n120";
+  "root" -> "n124";
+  "root" -> "n128";
+  "root" -> "n130";
+  "root" -> "n134";
+  "root" -> "n136";
+  "root" -> "n138";
+  "n1" -> "n2";
+  "n4" -> "n5";
+  "n6" -> "n7";
+  "n10" -> "n11";
+  "n12" -> "n13";
+  "n16" -> "n17";
+  "n18" -> "n19";
+  "n22" -> "n23";
+  "n26" -> "n27";
+  "n28" -> "n29";
+  "n32" -> "n33";
+  "n34" -> "n35";
+  "n38" -> "n39";
+  "n40" -> "n41";
+  "n44" -> "n45";
+  "n48" -> "n49";
+  "n50" -> "n51";
+  "n54" -> "n55";
+  "n58" -> "n59";
+  "n62" -> "n63";
+  "n64" -> "n65";
+  "n66" -> "n67";
+  "n70" -> "n71";
+  "n74" -> "n75";
+  "n78" -> "n79";
+  "n80" -> "n81";
+  "n82" -> "n83";
+  "n86" -> "n87";
+  "n88" -> "n89";
+  "n92" -> "n93";
+  "n96" -> "n97";
+  "n98" -> "n99";
+  "n102" -> "n103";
+  "n104" -> "n105";
+  "n108" -> "n109";
+  "n110" -> "n111";
+  "n114" -> "n115";
+  "n116" -> "n117";
+  "n120" -> "n121";
+  "n124" -> "n125";
+  "n128" -> "n129";
+  "n130" -> "n131";
+  "n134" -> "n135";
+  "n136" -> "n137";
+  "n138" -> "n139";
 }

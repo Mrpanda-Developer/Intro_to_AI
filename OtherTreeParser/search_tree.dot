@@ -1,10 +1,10 @@
 digraph tree {
   rankdir=TB;
-  node [shape=rectangle, fontname="Arial", fontsize=10];
+  node [shape=rectangle, fontsize=10];
   edge [arrowhead=vee];
-  splines=false;
-  nodesep=0.2;
-  ranksep=0.3;
+  minlen=2;
+  nodesep=0.5;
+  ranksep=0.8;
 
   "root" [label="root"];
   "n1" [label="Call: actor(_6258,_6278,_6328)"];
@@ -97,6 +97,10 @@ digraph tree {
   "n137" [label="Exit: director(the_hudsucker_proxy,joel_coen) ✅"];
   "n138" [label="Call: director(_984,ethan_coen)"];
   "n139" [label="Exit: director(the_hudsucker_proxy,ethan_coen) ✅"];
+
+  {rank=same; "root"; }
+  {rank=same; "n1"; "n4"; "n6"; "n10"; "n12"; "n16"; "n18"; "n22"; "n26"; "n28"; "n32"; "n34"; "n38"; "n40"; "n44"; "n48"; "n50"; "n54"; "n58"; "n62"; "n64"; "n66"; "n70"; "n74"; "n78"; "n80"; "n82"; "n86"; "n88"; "n92"; "n96"; "n98"; "n102"; "n104"; "n108"; "n110"; "n114"; "n116"; "n120"; "n124"; "n128"; "n130"; "n134"; "n136"; "n138"; }
+  {rank=same; "n2"; "n5"; "n7"; "n11"; "n13"; "n17"; "n19"; "n23"; "n27"; "n29"; "n33"; "n35"; "n39"; "n41"; "n45"; "n49"; "n51"; "n55"; "n59"; "n63"; "n65"; "n67"; "n71"; "n75"; "n79"; "n81"; "n83"; "n87"; "n89"; "n93"; "n97"; "n99"; "n103"; "n105"; "n109"; "n111"; "n115"; "n117"; "n121"; "n125"; "n129"; "n131"; "n135"; "n137"; "n139"; }
 
   "root" -> "n1";
   "root" -> "n4";

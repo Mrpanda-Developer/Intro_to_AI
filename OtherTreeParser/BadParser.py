@@ -11,8 +11,11 @@ REDO_RE = re.compile(r"^\s*Redo:(.+)$")
 def parse_trace(trace_lines):
     tree = Tree()
     tree.create_node("root", "root")
-    stack = [("root", "root")]  # (node_id, full_context)
+    
+    # Stack voor parent nodes en diepte tracking
+    stack = [("root", 0)]  # (parent_id, depth)
     node_counter = 0
+    current_depth = 0
 
     for line in trace_lines:
         line = line.strip()
@@ -21,92 +24,161 @@ def parse_trace(trace_lines):
 
         if m := CALL_RE.match(line):
             node_counter += 1
-            call_content = m.group(1).strip()
-            label = f"Call: {call_content}"
+            label = f"Call: {m.group(1).strip()}"
             node_id = f"n{node_counter}"
             
-            # Parent is de top van de stack
-            parent_id, _ = stack[-1]
-            tree.create_node(label, node_id, parent=parent_id)
+            # Bepaal de juiste parent based on depth
+            current_parent, parent_depth = stack[-1]
+            tree.create_node(label, node_id, parent=current_parent)
             
-            # Push naar stack met nieuwe context
-            stack.append((node_id, call_content))
+            # Verhoog diepte en push naar stack
+            current_depth = parent_depth + 1
+            stack.append((node_id, current_depth))
 
         elif m := EXIT_RE.match(line):
             node_counter += 1
-            exit_content = m.group(1).strip()
-            label = f"Exit: {exit_content} ✅"
+            label = f"Exit: {m.group(1).strip()} ✅"
             node_id = f"n{node_counter}"
             
-            # Parent is de bijbehorende call (top van stack)
             if len(stack) > 1:
-                parent_id, call_context = stack[-1]
-                tree.create_node(label, node_id, parent=parent_id)
-                stack.pop()  # Verwijder de voltooide call van stack
+                current_parent, parent_depth = stack[-1]
+                tree.create_node(label, node_id, parent=current_parent)
+                stack.pop()  # Ga terug naar vorige niveau
+                current_depth = parent_depth
 
         elif m := FAIL_RE.match(line):
             node_counter += 1
-            fail_content = m.group(1).strip()
-            label = f"Fail: {fail_content} ❌"
+            label = f"Fail: {m.group(1).strip()} ❌"
             node_id = f"n{node_counter}"
             
-            # Parent is de bijbehorende call (top van stack)
             if len(stack) > 1:
-                parent_id, call_context = stack[-1]
-                tree.create_node(label, node_id, parent=parent_id)
-                stack.pop()  # Verwijder de gefaalde call van stack
+                current_parent, parent_depth = stack[-1]
+                tree.create_node(label, node_id, parent=current_parent)
+                stack.pop()  # Ga terug naar vorige niveau
+                current_depth = parent_depth
 
         elif m := REDO_RE.match(line):
             node_counter += 1
-            redo_content = m.group(1).strip()
-            label = f"Redo: {redo_content} 🔄"
+            label = f"Redo: {m.group(1).strip()} 🔄"
             node_id = f"n{node_counter}"
             
-            # Parent is de huidige call (top van stack)
             if len(stack) > 1:
-                parent_id, call_context = stack[-1]
-                tree.create_node(label, node_id, parent=parent_id)
-                # Bij Redo blijven we op de stack voor mogelijke volgende calls
+                current_parent, parent_depth = stack[-1]
+                tree.create_node(label, node_id, parent=current_parent)
+                # Bij Redo blijven we opzelfde diepte
 
     return tree
 
+def parse_trace_deep(trace_lines):
+    """Alternative parser die diepere nesting forceert"""
+    tree = Tree()
+    tree.create_node("root", "root")
+    
+    call_stack = []  # Stack voor calls
+    parent_stack = ["root"]  # Stack voor parents
+    node_counter = 0
+    pending_calls = []  # Calls die wachten op nesting
 
-def create_compact_dot(tree, filename):
-    """Maak een compacte DOT weergave met verticale layout"""
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write("digraph tree {\n")
-        f.write("  rankdir=TB;\n")  # Top to Bottom
-        f.write("  node [shape=rectangle, fontname=\"Arial\", fontsize=10];\n")
-        f.write("  edge [arrowhead=vee];\n")
-        f.write("  splines=false;\n")
-        f.write("  nodesep=0.2;\n")
-        f.write("  ranksep=0.3;\n\n")
-        
-        # Schrijf alle nodes
-        for node in tree.all_nodes():
-            # Maak labels compacter
-            label = node.tag
-            if len(label) > 40:
-                # Split lange predicaat calls
-                if "(" in label and ")" in label:
-                    parts = label.split("(")
-                    if len(parts) > 1:
-                        pred_name = parts[0].replace("Call: ", "").replace("Exit: ", "").replace("Fail: ", "").replace("Redo: ", "")
-                        args = "(" + parts[1]
-                        if len(pred_name) > 15:
-                            pred_name = pred_name[:15] + "..."
-                        label = label.split(":")[0] + ": " + pred_name + args
+    for line in trace_lines:
+        line = line.strip()
+        if not line:
+            continue
+
+        if m := CALL_RE.match(line):
+            node_counter += 1
+            label = f"Call: {m.group(1).strip()}"
+            node_id = f"n{node_counter}"
             
-            f.write(f'  "{node.identifier}" [label="{label}"];\n')
-        
-        f.write("\n")
-        
-        # Schrijf hierarchische edges
-        for node in tree.all_nodes():
-            for child in tree.children(node.identifier):
-                f.write(f'  "{node.identifier}" -> "{child.identifier}";\n')
-        
-        f.write("}\n")
+            # Als er pending calls zijn, nest deze
+            if pending_calls:
+                prev_call_id, prev_label = pending_calls.pop()
+                tree.create_node(prev_label, prev_call_id, parent=parent_stack[-1])
+                parent_stack.append(prev_call_id)
+            
+            call_stack.append((node_id, label))
+            pending_calls.append((node_id, label))
+
+        elif m := EXIT_RE.match(line):
+            node_counter += 1
+            label = f"Exit: {m.group(1).strip()} ✅"
+            node_id = f"n{node_counter}"
+            
+            if call_stack:
+                call_id, call_label = call_stack.pop()
+                
+                # Creëer de call node als deze nog niet bestaat
+                if not tree.contains(call_id):
+                    tree.create_node(call_label, call_id, parent=parent_stack[-1] if parent_stack else "root")
+                
+                tree.create_node(label, node_id, parent=call_id)
+                
+                # Als we teruggaan, update parent stack
+                if parent_stack and parent_stack[-1] == call_id:
+                    parent_stack.pop()
+
+        elif m := FAIL_RE.match(line):
+            node_counter += 1
+            label = f"Fail: {m.group(1).strip()} ❌"
+            node_id = f"n{node_counter}"
+            
+            if call_stack:
+                call_id, call_label = call_stack.pop()
+                
+                if not tree.contains(call_id):
+                    tree.create_node(call_label, call_id, parent=parent_stack[-1] if parent_stack else "root")
+                
+                tree.create_node(label, node_id, parent=call_id)
+                
+                if parent_stack and parent_stack[-1] == call_id:
+                    parent_stack.pop()
+
+        elif m := REDO_RE.match(line):
+            node_counter += 1
+            label = f"Redo: {m.group(1).strip()} 🔄"
+            node_id = f"n{node_counter}"
+            
+            if call_stack:
+                call_id, call_label = call_stack[-1]  # Peek, niet pop
+                if tree.contains(call_id):
+                    tree.create_node(label, node_id, parent=call_id)
+
+    # Verwerk resterende pending calls
+    for call_id, call_label in pending_calls:
+        if not tree.contains(call_id):
+            tree.create_node(call_label, call_id, parent=parent_stack[-1] if parent_stack else "root")
+
+    return tree
+
+def analyze_trace_structure(trace_lines):
+    """Analyzeer de trace om de nesting te begrijpen"""
+    depth = 0
+    max_depth = 0
+    call_pattern = []
+    
+    print("=== Trace structuur analyse ===")
+    for i, line in enumerate(trace_lines[:50]):  # Bekijk eerste 50 regels
+        line = line.strip()
+        if not line:
+            continue
+            
+        if CALL_RE.match(line):
+            depth += 1
+            max_depth = max(max_depth, depth)
+            call_pattern.append(("Call", depth, line))
+            print(f"{i+1:3d}: {'  ' * depth}Call (depth: {depth})")
+            
+        elif EXIT_RE.match(line) or FAIL_RE.match(line):
+            call_pattern.append(("Exit/Fail", depth, line))
+            print(f"{i+1:3d}: {'  ' * depth}Exit/Fail (depth: {depth})")
+            if depth > 0:
+                depth -= 1
+                
+        elif REDO_RE.match(line):
+            call_pattern.append(("Redo", depth, line))
+            print(f"{i+1:3d}: {'  ' * depth}Redo (depth: {depth})")
+    
+    print(f"\nMaximale diepte in trace: {max_depth}")
+    return max_depth, call_pattern
 
 
 if __name__ == "__main__":
@@ -116,36 +188,71 @@ if __name__ == "__main__":
     with open(trace_path, "r", encoding="utf-8") as f:
         trace_lines = f.readlines()
 
-    tree = parse_trace(trace_lines)
+    # Analyseer eerst de trace structuur
+    max_depth, pattern = analyze_trace_structure(trace_lines)
+    
+    # Kies de juiste parser based on diepte
+    if max_depth >= 3:
+        print("\nGebruik deep parser voor geneste structuur")
+        tree = parse_trace_deep(trace_lines)
+    else:
+        print("\nGebruik standaard parser")
+        tree = parse_trace(trace_lines)
 
-    print("=== Boomstructuur (tekst) ===")
+    print("\n=== Boomstructuur (tekst) ===")
     tree.show(line_type="ascii")
 
-    # Toon de diepte van de boom
+    # Toon diepte informatie
     print(f"\nBoom diepte: {tree.depth()}")
     print(f"Aantal nodes: {tree.size()}")
     
-    # Toon de structuur per level
     for level in range(tree.depth() + 1):
         nodes_at_level = [node for node in tree.all_nodes() if tree.depth(node.identifier) == level]
-        print(f"Level {level}: {len(nodes_at_level)} nodes")
+        if nodes_at_level:
+            print(f"Level {level}: {len(nodes_at_level)} nodes")
+            if level <= 3:  # Toon eerste few levels voor debug
+                for node in nodes_at_level[:3]:  # Toon eerste 3 nodes per level
+                    print(f"     - {node.tag}")
 
-    # DOT bestand maken
+    # Maak DOT file met geforceerde diepte
     dot_path = os.path.join(base_dir, "search_tree.dot")
-    create_compact_dot(tree, dot_path)
+    with open(dot_path, "w", encoding="utf-8") as f:
+        f.write("digraph tree {\n")
+        f.write("  rankdir=TB;\n")
+        f.write("  node [shape=rectangle, fontsize=10];\n")
+        f.write("  edge [arrowhead=vee];\n")
+        
+        # Forceer minimale diepte
+        f.write("  minlen=2;\n")  # Minimale edge length voor diepte
+        f.write("  nodesep=0.5;\n")
+        f.write("  ranksep=0.8;\n\n")
+        
+        for node in tree.all_nodes():
+            f.write(f'  "{node.identifier}" [label="{node.tag}"];\n')
+        
+        f.write("\n")
+        
+        # Groepeer nodes per level voor betere hierarchie
+        for level in range(tree.depth() + 1):
+            nodes_at_level = [f'"{node.identifier}"' for node in tree.all_nodes() if tree.depth(node.identifier) == level]
+            if nodes_at_level:
+                f.write(f"  {{rank=same; {'; '.join(nodes_at_level)}; }}\n")
+        
+        f.write("\n")
+        
+        for node in tree.all_nodes():
+            for child in tree.children(node.identifier):
+                f.write(f'  "{node.identifier}" -> "{child.identifier}";\n')
+        
+        f.write("}\n")
+
     print(f"\nDOT-bestand opgeslagen: {dot_path}")
 
-    # PNG genereren
+    # Genereer PNG
     try:
         graph = graphviz.Source.from_file(dot_path)
         png_path = os.path.join(base_dir, "search_tree")
         graph.render(filename=png_path, format="png", cleanup=True)
         print(f"PNG-bestand opgeslagen: {png_path}.png")
     except Exception as e:
-        print(f"Fout bij het genereren van PNG: {e}")
-        print("Probeer handmatig: dot -Tpng search_tree.dot -o search_tree.png")
-
-    # Debug: toon de eerste 20 lines van de trace om te zien wat er geparsed wordt
-    print("\n=== Eerste 20 regels van trace ===")
-    for i, line in enumerate(trace_lines[:20]):
-        print(f"{i+1:2d}: {line.strip()}")
+        print(f"Fout bij PNG generatie: {e}")

@@ -1,0 +1,207 @@
+Call:actor(_5858,_5854,_5924)
+ Exit:actor(the_hudsucker_proxy,tim_robbins,norville_barnes)
+ Call:director(the_hudsucker_proxy,_882)
+ Exit:director(the_hudsucker_proxy,ethan_coen)
+ Call:director(_950,tim_robbins)
+ Fail:director(_950,tim_robbins)
+ Redo:director(the_hudsucker_proxy,_882)
+ Exit:director(the_hudsucker_proxy,joel_coen)
+ Call:director(_950,tim_robbins)
+ Fail:director(_950,tim_robbins)
+ Redo:actor(_862,_858,_928)
+ Exit:actor(the_hudsucker_proxy,sam_raimi,hudsucker_brainstormer)
+ Call:director(the_hudsucker_proxy,_882)
+ Exit:director(the_hudsucker_proxy,ethan_coen)
+ Call:director(_950,sam_raimi)
+ Exit:director(crimewave,sam_raimi)
+ Call:sam_raimi\=ethan_coen
+ Exit:sam_raimi\=ethan_coen
+M	A	D	
+the_hudsucker_proxy	sam_raimi	ethan_coen	1
+the_hudsucker_proxy	sam_raimi	joel_coen	2
+down_from_the_mountain	ethan_coen	nick_doob	3
+down_from_the_mountain	ethan_coen	nick_doob	4
+down_from_the_mountain	ethan_coen	chris_hegedus	5
+down_from_the_mountain	ethan_coen	chris_hegedus	6
+down_from_the_mountain	ethan_coen	d_a_pennebaker	7
+down_from_the_mountain	ethan_coen	d_a_pennebaker	8
+down_from_the_mountain	joel_coen	nick_doob	9
+down_from_the_mountain	joel_coen	nick_doob	10
+down_from_the_mountain	joel_coen	nick_doob	11
+down_from_the_mountain	joel_coen	chris_hegedus	12
+down_from_the_mountain	joel_coen	chris_hegedus	13
+down_from_the_mountain	joel_coen	chris_hegedus	14
+down_from_the_mountain	joel_coen	d_a_pennebaker	15
+down_from_the_mountain	joel_coen	d_a_pennebaker	16
+down_from_the_mountain	joel_coen	d_a_pennebaker	17
+crimewave	joel_coen	sam_raimi	18
+crimewave	joel_coen	sam_raimi	19
+crimewave	joel_coen	sam_raimi	20
+ Redo:director(the_hudsucker_proxy,_882)
+ Exit:director(the_hudsucker_proxy,joel_coen)
+ Call:director(_944,sam_raimi)
+ Exit:director(crimewave,sam_raimi)
+ Call:sam_raimi\=joel_coen
+ Exit:sam_raimi\=joel_coen
+ Redo:actor(_856,_852,_922)
+ Exit:actor(barton_fink,john_turturro,barton_fink)
+ Call:director(barton_fink,_876)
+ Exit:director(barton_fink,ethan_coen)
+ Call:director(_944,john_turturro)
+ Fail:director(_944,john_turturro)
+ Redo:director(barton_fink,_876)
+ Exit:director(barton_fink,joel_coen)
+ Call:director(_944,john_turturro)
+ Fail:director(_944,john_turturro)
+ Redo:actor(_856,_852,_922)
+ Exit:actor(barton_fink,john_goodman,charlie_meadows)
+ Call:director(barton_fink,_876)
+ Exit:director(barton_fink,ethan_coen)
+ Call:director(_944,john_goodman)
+ Fail:director(_944,john_goodman)
+ Redo:director(barton_fink,_876)
+ Exit:director(barton_fink,joel_coen)
+ Call:director(_944,john_goodman)
+ Fail:director(_944,john_goodman)
+ Redo:actor(_856,_852,_922)
+ Exit:actor(the_big_lebowski,jeff_bridges,jeffrey_lebowski__the_dude)
+ Call:director(the_big_lebowski,_876)
+ Exit:director(the_big_lebowski,joel_coen)
+ Call:director(_944,jeff_bridges)
+ Fail:director(_944,jeff_bridges)
+ Redo:actor(_856,_852,_922)
+ Exit:actor(the_big_lebowski,john_goodman,walter_sobchak)
+ Call:director(the_big_lebowski,_876)
+ Exit:director(the_big_lebowski,joel_coen)
+ Call:director(_944,john_goodman)
+ Fail:director(_944,john_goodman)
+ Redo:actor(_856,_852,_922)
+ Exit:actor(the_big_lebowski,john_turturro,jesus_quintana)
+ Call:director(the_big_lebowski,_876)
+ Exit:director(the_big_lebowski,joel_coen)
+ Call:director(_944,john_turturro)
+ Fail:director(_944,john_turturro)
+ Redo:actor(_856,_852,_922)
+ Exit:actor(down_from_the_mountain,sidney_cox,himself)
+ Call:director(down_from_the_mountain,_876)
+ Exit:director(down_from_the_mountain,nick_doob)
+ Call:director(_944,sidney_cox)
+ Fail:director(_944,sidney_cox)
+ Redo:director(down_from_the_mountain,_876)
+ Exit:director(down_from_the_mountain,chris_hegedus)
+ Call:director(_944,sidney_cox)
+ Fail:director(_944,sidney_cox)
+ Redo:director(down_from_the_mountain,_876)
+ Exit:director(down_from_the_mountain,d_a_pennebaker)
+ Call:director(_944,sidney_cox)
+ Fail:director(_944,sidney_cox)
+ Redo:actor(_856,_852,_922)
+ Exit:actor(down_from_the_mountain,ethan_coen,himself)
+ Call:director(down_from_the_mountain,_876)
+ Exit:director(down_from_the_mountain,nick_doob)
+ Call:director(_944,ethan_coen)
+ Exit:director(the_hudsucker_proxy,ethan_coen)
+ Call:ethan_coen\=nick_doob
+ Exit:ethan_coen\=nick_doob
+ Redo:director(_944,ethan_coen)
+ Exit:director(barton_fink,ethan_coen)
+ Call:ethan_coen\=nick_doob
+ Exit:ethan_coen\=nick_doob
+ Redo:director(down_from_the_mountain,_876)
+ Exit:director(down_from_the_mountain,chris_hegedus)
+ Call:director(_944,ethan_coen)
+ Exit:director(the_hudsucker_proxy,ethan_coen)
+ Call:ethan_coen\=chris_hegedus
+ Exit:ethan_coen\=chris_hegedus
+ Redo:director(_944,ethan_coen)
+ Exit:director(barton_fink,ethan_coen)
+ Call:ethan_coen\=chris_hegedus
+ Exit:ethan_coen\=chris_hegedus
+ Redo:director(down_from_the_mountain,_876)
+ Exit:director(down_from_the_mountain,d_a_pennebaker)
+ Call:director(_944,ethan_coen)
+ Exit:director(the_hudsucker_proxy,ethan_coen)
+ Call:ethan_coen\=d_a_pennebaker
+ Exit:ethan_coen\=d_a_pennebaker
+ Redo:director(_944,ethan_coen)
+ Exit:director(barton_fink,ethan_coen)
+ Call:ethan_coen\=d_a_pennebaker
+ Exit:ethan_coen\=d_a_pennebaker
+ Redo:actor(_856,_852,_922)
+ Exit:actor(down_from_the_mountain,joel_coen,himself)
+ Call:director(down_from_the_mountain,_876)
+ Exit:director(down_from_the_mountain,nick_doob)
+ Call:director(_944,joel_coen)
+ Exit:director(the_hudsucker_proxy,joel_coen)
+ Call:joel_coen\=nick_doob
+ Exit:joel_coen\=nick_doob
+ Redo:director(_944,joel_coen)
+ Exit:director(barton_fink,joel_coen)
+ Call:joel_coen\=nick_doob
+ Exit:joel_coen\=nick_doob
+ Redo:director(_944,joel_coen)
+ Exit:director(the_big_lebowski,joel_coen)
+ Call:joel_coen\=nick_doob
+ Exit:joel_coen\=nick_doob
+ Redo:director(down_from_the_mountain,_876)
+ Exit:director(down_from_the_mountain,chris_hegedus)
+ Call:director(_944,joel_coen)
+ Exit:director(the_hudsucker_proxy,joel_coen)
+ Call:joel_coen\=chris_hegedus
+ Exit:joel_coen\=chris_hegedus
+ Redo:director(_944,joel_coen)
+ Exit:director(barton_fink,joel_coen)
+ Call:joel_coen\=chris_hegedus
+ Exit:joel_coen\=chris_hegedus
+ Redo:director(_944,joel_coen)
+ Exit:director(the_big_lebowski,joel_coen)
+ Call:joel_coen\=chris_hegedus
+ Exit:joel_coen\=chris_hegedus
+ Redo:director(down_from_the_mountain,_876)
+ Exit:director(down_from_the_mountain,d_a_pennebaker)
+ Call:director(_944,joel_coen)
+ Exit:director(the_hudsucker_proxy,joel_coen)
+ Call:joel_coen\=d_a_pennebaker
+ Exit:joel_coen\=d_a_pennebaker
+ Redo:director(_944,joel_coen)
+ Exit:director(barton_fink,joel_coen)
+ Call:joel_coen\=d_a_pennebaker
+ Exit:joel_coen\=d_a_pennebaker
+ Redo:director(_944,joel_coen)
+ Exit:director(the_big_lebowski,joel_coen)
+ Call:joel_coen\=d_a_pennebaker
+ Exit:joel_coen\=d_a_pennebaker
+ Redo:actor(_856,_852,_922)
+ Exit:actor(crimewave,paul_l_smith,faron_crush)
+ Call:director(crimewave,_876)
+ Exit:director(crimewave,sam_raimi)
+ Call:director(_944,paul_l_smith)
+ Fail:director(_944,paul_l_smith)
+ Redo:actor(_856,_852,_922)
+ Exit:actor(crimewave,brion_james,arthur_coddish)
+ Call:director(crimewave,_876)
+ Exit:director(crimewave,sam_raimi)
+ Call:director(_944,brion_james)
+ Fail:director(_944,brion_james)
+ Redo:actor(_856,_852,_922)
+ Exit:actor(crimewave,joel_coen,reporter_at_execution)
+ Call:director(crimewave,_876)
+ Exit:director(crimewave,sam_raimi)
+ Call:director(_944,joel_coen)
+ Exit:director(the_hudsucker_proxy,joel_coen)
+ Call:joel_coen\=sam_raimi
+ Exit:joel_coen\=sam_raimi
+ Redo:director(_944,joel_coen)
+ Exit:director(barton_fink,joel_coen)
+ Call:joel_coen\=sam_raimi
+ Exit:joel_coen\=sam_raimi
+ Redo:director(_944,joel_coen)
+ Exit:director(the_big_lebowski,joel_coen)
+ Call:joel_coen\=sam_raimi
+ Exit:joel_coen\=sam_raimi
+ Redo:actor(_856,_852,_922)
+ Exit:actor(crimewave,dan_nelson,waiter)
+ Call:director(crimewave,_876)
+ Exit:director(crimewave,sam_raimi)
+ Call:director(_944,dan_nelson)
+ Fail:director(_944,dan_nelson)

@@ -1,0 +1,35 @@
+digraph "Search Results Analysis" {
+  rankdir=TB;
+  nodesep=0.3; ranksep=0.5;
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=9];
+  edge [arrowhead=vee, arrowsize=0.8];
+
+  "root" [label="Search Results Analysis", fillcolor="#f3e5f5", style="filled,bold", fontsize=10];
+  "query_1" [label="Query: actor(M,A,_), director(M,D), director(_,A), A \= D", fillcolor="#f3e5f5", style="filled,bold", fontsize=10];
+  "desc_2" [label="Finds actors who directed movies but acted under different directors", fillcolor="#fafafa"];
+  "final_3" [label="Final Results from Prolog", fillcolor="#e8f5e9", style="filled,bold", fontsize=9];
+  "final_result_4" [label="the_hudsucker_proxy	sam_raimi	ethan_coen	1", fillcolor="#fafafa"];
+  "final_result_5" [label="the_hudsucker_proxy	sam_raimi	joel_coen	2", fillcolor="#fafafa"];
+  "final_result_6" [label="down_from_the_mountain	ethan_coen	nick_doob	3", fillcolor="#fafafa"];
+  "final_result_7" [label="down_from_the_mountain	ethan_coen	nick_doob	4", fillcolor="#fafafa"];
+  "final_result_8" [label="down_from_the_mountain	ethan_coen	chris_hegedus	5", fillcolor="#fafafa"];
+  "final_result_9" [label="down_from_the_mountain	ethan_coen	chris_hegedus	6", fillcolor="#fafafa"];
+  "final_result_10" [label="down_from_the_mountain	ethan_coen	d_a_pennebaker	7", fillcolor="#fafafa"];
+  "final_result_11" [label="down_from_the_mountain	ethan_coen	d_a_pennebaker	8", fillcolor="#fafafa"];
+  "final_result_12" [label="down_from_the_mountain	joel_coen	nick_doob	9", fillcolor="#fafafa"];
+  "final_result_13" [label="down_from_the_mountain	joel_coen	nick_doob	10", fillcolor="#fafafa"];
+
+  "root" -> "query_1";
+  "root" -> "final_3";
+  "query_1" -> "desc_2";
+  "final_3" -> "final_result_4";
+  "final_3" -> "final_result_5";
+  "final_3" -> "final_result_6";
+  "final_3" -> "final_result_7";
+  "final_3" -> "final_result_8";
+  "final_3" -> "final_result_9";
+  "final_3" -> "final_result_10";
+  "final_3" -> "final_result_11";
+  "final_3" -> "final_result_12";
+  "final_3" -> "final_result_13";
+}

@@ -49,12 +49,31 @@ Files my code creates:
 
 How to understand the tree:
 
-Colors help see what's happening:
-    - Purple nodes: Prolog starting a new search ("Call:")
-    - Green nodes: Something worked successfully ("Exit:") 
-    - Red nodes: Dead ends where things failed ("Fail:")
-    - Orange nodes: Backtracking to try alternatives ("Redo:")
-    - Blue nodes: Regular steps in between
+COLOR CODING EXPLANATION:
+    - PURPLE nodes: Prolog starting a new search ("Call:")
+    - LIGHT GREEN nodes: Intermediate successes ("Exit:" for actor/director finds)
+    - BLUE nodes: Final successful matches (actor-director pairs that satisfy all conditions)
+    - RED nodes: Dead ends where things failed ("Fail:")
+    - ORANGE nodes: Backtracking to try alternatives ("Redo:")
+    - BRIGHT GREEN nodes with stars: Highlighted successful paths
+
+IMPORTANT NOTE ABOUT "MATCHES":
+    In the tree visualization, you'll see two types of successful nodes:
+    
+    1. LIGHT GREEN nodes ("Exit: Found actor/director"): 
+       These are INTERMEDIATE successes - Prolog found an actor or director, 
+       but this doesn't mean the overall query succeeded yet.
+    
+    2. BLUE nodes ("Exit: Director X for movie Y"): 
+       These are PARTIAL successes - a director was found for a movie, but 
+       we still need to check if the actor has also directed movies.
+    
+    3. BRIGHT GREEN nodes with 🎉 symbols: 
+       These are the TRUE FINAL MATCHES - where all conditions are satisfied:
+       - Actor found in a movie
+       - Director found for that movie  
+       - Actor has directed some other movie
+       - Actor and director are different people
 
 What the tree shows:
     The tree follows Prolog's exact search process. It starts at the top 
@@ -76,6 +95,11 @@ This creates a nice deep tree that shows how Prolog really works.
 
 HOW TO RUN MY CODE
 ------------------
+
+What you need:
+    - Python 3 (I used 3.8 but any recent version should work)
+    - Two libraries: treelib and graphviz
+
 To install the libraries, run:
     pip install treelib graphviz
 
@@ -92,6 +116,12 @@ If you have problems:
     - The text file version (backtracking_search.txt) always works 
       even if the picture doesn't generate
 
+
+This practical really helped me understand how Prolog's search works 
+behind the scenes. The visualization makes it much easier to see what's 
+happening compared to just reading the trace text.
+
+---
 Submission for Practical 3
 Student ID: i6403910
 Date: 22-09-2025

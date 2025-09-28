@@ -18,8 +18,8 @@ RANDOM_STATE = 42    # reproducibility
 # -----------------------------
 
 # Load datasets
-labelled = pd.read_excel("../dataset_labelled.xlsx")
-unlabelled = pd.read_excel("../dataset_unlabelled.xlsx")
+labelled = pd.read_excel("dataset_labelled.xlsx")
+unlabelled = pd.read_excel("dataset_unlabelled.xlsx")
 
 
 # Split into features and target

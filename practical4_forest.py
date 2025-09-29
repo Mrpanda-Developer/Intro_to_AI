@@ -11,10 +11,10 @@ from openpyxl import load_workbook
 # -----------------------------
 # Parameters
 # -----------------------------
-N_TREES = 50         # number of trees in forest
+N_TREES = 2000        # number of trees in forest
 MAX_DEPTH = None     # max depth of trees
-K_FOLDS = 5          # manual k-fold cross-validation
-RANDOM_STATE = 42    # reproducibility
+K_FOLDS = 20          # manual k-fold cross-validation
+RANDOM_STATE = 100    # reproducibility
 # -----------------------------
 
 # Load datasets
